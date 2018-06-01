@@ -1,7 +1,7 @@
 # Installation guide for running the IPS VPS script
 # Step 1
 ```    
-wget -q https://raw.githubusercontent.com/MotoAcidic/guides/master/scripts/ips_install.sh
+wget -q https://raw.githubusercontent.com/MotoAcidic/IPS_Scripts/master/ips_install.sh
 
 ```
 # Step 2
