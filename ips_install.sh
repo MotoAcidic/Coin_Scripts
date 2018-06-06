@@ -320,6 +320,17 @@ addnode=107.174.59.154
 EOF
 }
 
+function update_config() {
+  sed -i 's/daemon=1/daemon=0/' $CONFIGFOLDER/$CONFIG_FILE
+  cat << EOF >> $CONFIGFOLDER/$CONFIG_FILE
+wget https://github.com/ipsum-network/seeds/blob/master/README.md
+
+sed -ni 's/.*\(addnode=\)/\1/p' README.md
+
+cat README.md >> .ips/ips.conf
+EOF
+}
+
 
 function enable_firewall() {
   echo -e "Installing and setting up firewall to allow ingress on port ${GREEN}$COIN_PORT${NC}"
