@@ -8,29 +8,24 @@ wget -q https://github.com/MotoAcidic/IPS_Scripts/raw/master/ips_install.sh
 # Step 2
   * This will mount the script 
 ```
-chmod +x ips_install.sh
+bash ips_install.sh
 
 ```
+
 # Step 3
-  * This installs the script
-```
-./ips_install.sh install
-
-```
-# Step 4
   * Watch the block number until it gets to the current block height
 ```
 watch ips-cli getinfo
 
 ```
 
-# Step 5
+# Step 4
   * Install upstart so you can use systemctl commands
 ```    
 apt install upstart
 
 ```
-# Step 6
+# Step 5
   * These are the commands you are able to use
 ```    
 systemctl start Ips
