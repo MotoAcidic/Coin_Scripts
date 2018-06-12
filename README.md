@@ -2,7 +2,7 @@
 # Step 1
   * This will download the auto install script to your VPS.
 ```    
-wget -q https://raw.githubusercontent.com/MotoAcidic/IPS_Scripts/master/ips_install.sh
+wget -q https://github.com/MotoAcidic/IPS_Scripts/raw/master/ips_install.sh
 
 ```
 # Step 2
