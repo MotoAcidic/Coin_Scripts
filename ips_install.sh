@@ -21,8 +21,6 @@
 -echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 -echo && echo && echo
 -
--echo "Do you want to install all needed dependencies (no if you did it before)? [y/n]"
--read DOSETUP
 
 
 TMP_FOLDER=$(mktemp -d)
@@ -441,5 +439,3 @@ checks
 prepare_system
 download_node
 setup_node
-setup_node
-
