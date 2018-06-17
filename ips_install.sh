@@ -23,7 +23,7 @@
 -
 
 
-TMP_FOLDER=$(mktemp -d)
+MP_FOLDER=$(mktemp -d)
 CONFIG_FILE='ips.conf'
 CONFIGFOLDER='/root/.ips'
 COIN_DAEMON='ipsd'
@@ -400,6 +400,21 @@ if [ "$?" -gt "0" ];
 libboost-program-options-dev libboost-system-dev libboost-test-dev libboost-thread-dev sudo automake git curl libdb4.8-dev \
 bsdmainutils libdb4.8++-dev libminiupnpc-dev libgmp3-dev ufw pkg-config libevent-dev libdb5.3++ unzip libzmq5"
  exit 1
+fi
+
+clear
+echo -e "Checking if swap space is needed."
+PHYMEM=$(free -g|awk '/^Mem:/{print $2}')
+SWAP=$(swapon -s)
+if [[ "$PHYMEM" -lt "2" && -z "$SWAP" ]];
+  then
+    echo -e "${GREEN}Server is running with less than 2G of RAM, creating 2G swap file.${NC}"
+    dd if=/dev/zero of=/swapfile bs=1024 count=2M
+    chmod 600 /swapfile
+    mkswap /swapfile
+    swapon -a /swapfile
+else
+  echo -e "${GREEN}The server running with at least 2G of RAM, or SWAP exists.${NC}"
 fi
 clear
 }
