@@ -116,12 +116,3 @@ systemctl is-enabled Nibex.service      #To check if Nibex service is enabled on
 ```  
 
 ***
-
-## Donations
-
-Any donation is highly appreciated
-
-**NBX**: EJ1gY9jmGbkP4res6Ep6JJX3J6BUGoJq4x  
-**BTC**: 32PN27dDZhUYAmyJTWuzDvNscbVpkL9855  
-**ETH**: 0x02680cdF57EEDC20C8A12036CA03e8D5F813b33b  
-**LTC**: MKYX9Pm58z6xSWT4Rc3CynjR58nj8hKo4F  
