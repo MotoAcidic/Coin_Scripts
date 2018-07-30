@@ -31,7 +31,7 @@ COIN_CLI='smrtc-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_TGZ='https://github.com/SMRT-Cloud/smrtc/releases/download/v1.0.0.0/smrtc-linux.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
-COIN_NAME='Smrtc'
+COIN_NAME='smrtc'
 COIN_PORT=9887
 RPC_PORT=19112
 
