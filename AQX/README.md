@@ -8,8 +8,8 @@ wget -q https://raw.githubusercontent.com/MotoAcidic/Coin_Scripts/master/AQX/AQX
 # Step 2
   * Run the script and input the proper information during the prompts
 ```
-chmod u+x AQX_Install.sh
-./AQX_Install.sh
+chmod u+x AQX-install.sh
+./AQX-install.sh
 
 ```
 
