@@ -1,37 +1,22 @@
-# Installation guide for running the AQX VPS script
-# Step 1
-  * This will download the auto install script to your VPS.
+# Installation guide for running the AQX VPS install script
+# Step 1 
+  * Download the install script
 ```    
-wget -q https://raw.githubusercontent.com/MotoAcidic/Coin_Scripts/master/AQX/AQX-install.sh
+wget -q https://raw.githubusercontent.com/turbowrx03/Guides/master/VPS%20Install/AQX_Install.sh
 
 ```
 # Step 2
-  * This will mount the script 
+  * Run the script and input the proper information during the prompts
 ```
-bash AQX-install.sh
+chmod u+x AQX_Install.sh
+./AQX_Install.sh
 
 ```
 
 # Step 3
-  * Watch the block number until it gets to the current block height
+  * Start Aquila
 ```
-watch Aquila-cli getinfo
-
-```
-
-# Step 4
-  * Install upstart so you can use systemctl commands
-```    
-apt install upstart
+./Aquilad -daemon
 
 ```
-# Step 5
-  * These are the commands you are able to use
-```    
-systemctl start Aquila
-
-systemctl status Aquila
-
-systemctl stop Aquila
-
-```
+  * If you get a message asking to rebuild the database, please hit Ctr + C and run ./Aquilad -daemon -reindex
