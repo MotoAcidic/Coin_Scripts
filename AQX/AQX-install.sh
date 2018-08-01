@@ -125,7 +125,7 @@ addnode=104.238.131.253:19333
 EOF
 
 echo AquilaX configuration file has been updated successfully.
-echo You can start your new AquilaX masternode manually by running ./Aquilad -daemon
+echo You can start your new AquilaX masternode manually by running ./Aquilad -testnet
 echo If you get a message asking to rebuild the database, please hit Ctr + C and run ./Aquilad -daemon -reindex
 echo If you still have further issues please reach out to support in our Discord channel.
             ;;
