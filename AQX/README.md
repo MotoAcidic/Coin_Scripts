@@ -2,7 +2,7 @@
 # Step 1 
   * Download the install script
 ```    
-wget -q https://raw.githubusercontent.com/turbowrx03/Guides/master/VPS%20Install/AQX_Install.sh
+wget -q https://raw.githubusercontent.com/MotoAcidic/Coin_Scripts/master/AQX/AQX-install.sh
 
 ```
 # Step 2
