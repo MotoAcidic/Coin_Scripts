@@ -1,4 +1,4 @@
-# Installation guide for running the AQX VPS install script
+# Installation guide for running the AQX TESTNET VPS install script
 # Step 1 
   * Download the install script
 ```    
