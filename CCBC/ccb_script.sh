@@ -82,10 +82,10 @@ maxconnections=256
 masternode=1
 externalip=$VPSIP
 masternodeprivkey=$GENKEY
-addnode=144.202.54.65:19333
-addnode=45.32.200.48:19333
-addnode=140.82.43.229:19333
-addnode=104.238.131.253:19333
+addnode=144.202.54.65:5520
+addnode=45.32.200.48:5520
+addnode=140.82.43.229:5520
+addnode=104.238.131.253:5520
 EOF
 
 echo CCBC configuration file created successfully. 
