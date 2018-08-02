@@ -1,47 +1,145 @@
 #!/bin/bash
-sudo apt-get update -y
-sudo apt-get upgrade -y
-sudo apt-get dist-upgrade -y
+
+HEIGHT=15
+WIDTH=40
+CHOICE_HEIGHT=6
+BACKTITLE="Aquila Masternode Setup Wizard"
+TITLE="Aquila VPS Setup"
+MENU="Choose one of the following options:"
+
+OPTIONS=(1 "Install New VPS Server"
+         2 "Reconfigure Existing VPS Server"
+         3 "Start Aquila Masternode"
+	 4 "Stop Aquila Masternode"
+	 5 "Rebuild Aquila Masternode Index"
+	 6 "Aquila Server Status")
+
+CHOICE=$(whiptail --clear\
+		--backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
+
+clear
+case $CHOICE in
+        1)
+            echo Starting the install process.
+echo Checking and installing VPS server prerequisites. Please wait.
+sudo apt update
+sudo apt-get -y upgrade
 sudo apt-get install git -y
-sudo apt-get install nano -y
-sudo apt-get install curl -y
-sudo apt-get install pwgen -y
-sudo apt-get install wget -y
-sudo apt-get install build-essential libtool automake autoconf -y
-sudo apt-get install autotools-dev autoconf pkg-config libssl-dev -y
-sudo apt-get install libgmp3-dev libevent-dev bsdmainutils libboost-all-dev -y
-sudo apt-get install libzmq3-dev -y
-sudo apt-get install libminiupnpc-dev -y
+sudo apt-get install build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils -y
+sudo apt-get install libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev -y
+sudo apt-get install libboost-all-dev -y
+sudo apt-get install software-properties-common -y
 sudo add-apt-repository ppa:bitcoin/bitcoin -y
-sudo apt-get update -y
+sudo apt-get update
 sudo apt-get install libdb4.8-dev libdb4.8++-dev -y
-#get ip lib
-sudo apt install libwww-perl -y
+sudo apt-get install libminiupnpc-dev -y
+sudo apt-get install libzmq3-dev -y
+sudo apt-get install libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools libprotobuf-dev protobuf-compiler -y
+sudo apt-get install libqt4-dev libprotobuf-dev protobuf-compiler -y
 
-cd
-#get wallet files
-#rm ccbc-linux.tar.gz
-wget 
-tar -xvf ccbc-linux.tar.gz
-rm smrtc-linux.tar.gz
-chmod +x cryptocashback*
-cp smrtc* /usr/local/bin
-rm ccbc_auto.sh
-rm cryptocashback*
-ufw allow 5520/tcp
+echo VPS Server prerequisites installed.
+echo Configuring server firewall.
+sudo ufw allow 45454
+echo Server firewall configuration completed.
+echo Downloading AquilaX install files.
+wget https://github.com/aquilacoin/AquilaX/releases/download/V1.2.0.0/AquilaX-linux-Testnet.tar.gz
+echo Download complete.
+echo Installing AquilaX.
+tar xvf AquilaX-linux-Testnet.tar.gz
+chmod 775 ./Aquilad
+chmod 775 ./Aquila-cli
+echo AquilaX install complete. 
 
-#masternode input
+echo Now ready to setup AquilaX configuration file.
 
-echo -e "${GREEN}Now paste your Masternode key by using right mouse click ${NONE}";
-read MNKEY
 
-EXTIP=`lwp-request -o text checkip.dyndns.org | awk '{ print $NF }'`
-USER=`pwgen -1 20 -n`
-PASSW=`pwgen -1 20 -n`
+RPCUSER=NEW_UUID=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
+RPCPASSWORD=NEW_UUID=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
+VPSIP=$(curl -s4 icanhazip.com)
+echo Please input your private key.
+read GENKEY
 
-echo -e "${GREEN}Preparing config file ${NONE}";
-sudo mkdir $HOME/.cryptocashback
+mkdir -p /root/.Aquila && touch /root/.Aquila/Aquila.conf
 
-printf "addnode=220.233.78.249:5520\naddnode=108.224.49.202:5520\naddnode=139.99.197.135:5520\n\nrpcuser=smartcuser$USER\nrpcpassword=$PASSW\nrpcport=5522\nrpcallowip=127.0.0.1\ndaemon=1\nlisten=1\nserver=1\nmaxconnections=54\nexternalip=$EXTIP\nbind=$EXTIP:5520\nmasternode=1\nmasternodeprivkey=$MNKEY" >  $HOME/.cryptocashback/cryptocashback.conf
-smrtcd
-watch smrtc-cli getinfo
+cat > /root/.Aquila/Aquila.conf << EOF
+rpcuser=$RPCUSER
+rpcpassword=$RPCPASSWORD
+rpcallowip=127.0.0.1
+server=1
+listen=1
+daemon=1
+staking=1
+rpcallowip=127.0.0.1
+rpcport=45455
+port=19333
+logtimestamps=1
+maxconnections=256
+masternode=1
+externalip=$VPSIP
+masternodeprivkey=$GENKEY
+addnode=144.202.54.65:19333
+addnode=45.32.200.48:19333
+addnode=140.82.43.229:19333
+addnode=104.238.131.253:19333
+EOF
+
+echo AquilaX configuration file created successfully. 
+echo Please start your new AquilaX masternode by running ./Aquilad -daemon
+echo If you get a message asking to rebuild the database, please hit Ctr + C and run ./Aquilad -daemon -reindex
+echo If you still have further issues please reach out to support in our Discord channel. 
+            ;;
+        2)
+            RPCUSER=NEW_UUID=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
+RPCPASSWORD=NEW_UUID=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
+VPSIP=$(curl -s4 icanhazip.com)
+echo Please input your private key.
+read GENKEY
+
+mkdir -p /root/.Aquila && touch /root/.Aquila/Aquila.conf
+
+cat > /root/.Aquila/Aquila.conf << EOF
+rpcuser=$RPCUSER
+rpcpassword=$RPCPASSWORD
+rpcallowip=127.0.0.1
+server=1
+listen=1
+daemon=1
+staking=1
+rpcallowip=127.0.0.1
+rpcport=45455
+port=19333
+logtimestamps=1
+maxconnections=256
+masternode=1
+externalip=$VPSIP
+masternodeprivkey=$GENKEY
+addnode=144.202.54.65:19333
+addnode=45.32.200.48:19333
+addnode=140.82.43.229:19333
+addnode=104.238.131.253:19333
+EOF
+
+echo AquilaX configuration file has been updated successfully.
+echo You can start your new AquilaX masternode manually by running ./Aquilad -testnet
+echo If you get a message asking to rebuild the database, please hit Ctr + C and run ./Aquilad -daemon -reindex
+echo If you still have further issues please reach out to support in our Discord channel.
+            ;;
+        3)
+            ./Aquilad -daemon
+		echo "If you get a message asking to rebuild the database, please hit Ctr + C and rebuild Aquila Index. (Option 5)"
+            ;;
+	4)
+            ./Aquila-cli stop
+            ;;
+	5)
+           ./Aquilad -daemon -reindex
+            ;;
+        6)
+	   ./Aquila-cli getinfo
+	   ;;
+esac
