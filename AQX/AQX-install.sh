@@ -47,7 +47,7 @@ echo Configuring server firewall.
 sudo ufw allow 45454
 echo Server firewall configuration completed.
 echo Downloading AquilaX install files.
-wget https://github.com/aquilacoin/AquilaX/releases/download/1.2.0.0/AquilaX-linux-Testnet.tar.gz
+wget https://github.com/aquilacoin/AquilaX/releases/download/V1.2.0.0/AquilaX-linux-Testnet.tar.gz
 echo Download complete.
 echo Installing AquilaX.
 tar xvf AquilaX-linux-Testnet.tar.gz
