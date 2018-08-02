@@ -39,46 +39,27 @@ function configure_systemd() {
 [Unit]
 Description=$COIN_NAME service
 After=network.target
+
 [Service]
 User=root
 Group=root
+
 Type=forking
 #PIDFile=$CONFIGFOLDER/$COIN_NAME.pid
+
 ExecStart=$COIN_PATH$COIN_DAEMON -daemon -conf=$CONFIGFOLDER/$CONFIG_FILE -datadir=$CONFIGFOLDER
 ExecStop=-$COIN_PATH$COIN_CLI -conf=$CONFIGFOLDER/$CONFIG_FILE -datadir=$CONFIGFOLDER stop
+
 Restart=always
 PrivateTmp=true
 TimeoutStopSec=60s
 TimeoutStartSec=10s
 StartLimitInterval=120s
 StartLimitBurst=5
+
 [Install]
 WantedBy=multi-user.target
 EOF
-
-  systemctl daemon-reload
-  sleep 3
-  systemctl start $COIN_NAME.service
-  systemctl enable $COIN_NAME.service >/dev/null 2>&1
-  systemctl stop $COIN_NAME.service
-  wget -q https://github.com/CryptoNeverSleeps/Aquila-Script/releases/download/Aquila-Linux/aqx-blockchain.tar.gz
-  tar xvzf aqx-blockchain.tar.gz >/dev/null 2>&1
-  cd bin
-  cp -a blocks /root/.Aquila/
-  cp -a chainstate /root/.Aquila/
-  cd ..
-  rm -rf bin
-  rm aqx-blockchain.tar.gz
-  systemctl start $COIN_NAME.service
-  systemctl enable $COIN_NAME.service
-
-  if [[ -z "$(ps axo cmd:100 | egrep $COIN_DAEMON)" ]]; then
-    echo -e "${RED}$COIN_NAME is not running${NC}, please investigate. You should start by running the following commands as root:"
-    echo -e "${GREEN}systemctl start $COIN_NAME.service"
-    echo -e "systemctl status $COIN_NAME.service"
-    echo -e "less /var/log/syslog${NC}"
-    exit 1
-  fi
 }
 
 
@@ -95,7 +76,10 @@ listen=1
 server=1
 daemon=1
 port=$COIN_PORT
-
+addnode=144.202.54.65:5520
+addnode=45.32.200.48:5520
+addnode=140.82.43.229:5520
+addnode=104.238.131.253:5520
 EOF
 }
 
@@ -274,3 +258,4 @@ checks
 prepare_system
 download_node
 setup_node
+
