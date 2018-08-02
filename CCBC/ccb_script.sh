@@ -25,7 +25,7 @@ wget https://github.com/CryptoCashBack-Hub/CCBC/releases/download/V1.0.0.0/CCBC-
 tar -xvf CCBC-linux.tar.gz
 rm CCBC-linux.tar.gz
 chmod +x cryptocashback*
-cp smrtc* /usr/local/bin
+cp cryptocashback* /usr/local/bin
 rm ccb_script.sh
 rm cryptocashback*
 ufw allow 5520/tcp
@@ -43,5 +43,5 @@ echo -e "${GREEN}Preparing config file ${NONE}";
 sudo mkdir $HOME/.cryptocashback
 
 printf "addnode=144.202.54.65:5520\naddnode=45.32.200.48:5520\naddnode=140.82.43.229:5520\naddnode=104.238.131.253:5520\n\nrpcuser=ccbcuser$USER\nrpcpassword=$PASSW\nrpcport=5522\nrpcallowip=127.0.0.1\ndaemon=1\nlisten=1\nserver=1\nmaxconnections=54\nexternalip=$EXTIP\nbind=$EXTIP:5520\nmasternode=1\nmasternodeprivkey=$MNKEY" >  $HOME/.cryptocashback/cryptocashback.conf
-smrtcd
+cryptocashbackd
 watch cryptocashback-cli getinfo
