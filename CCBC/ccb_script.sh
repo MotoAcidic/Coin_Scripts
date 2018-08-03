@@ -18,7 +18,6 @@ sudo apt-get install libdb4.8-dev libdb4.8++-dev -y
 
 cd
 #get wallet files
-#rm smrtc-linux.tar.gz
 wget https://github.com/CryptoCashBack-Hub/CCBC/releases/download/V1.0.0.0/CCBC-linux.tar.gz
 tar -xvf CCBC-linux.tar.gz
 rm CCBC-linux.tar.gz
@@ -40,6 +39,6 @@ PASSW=`pwgen -1 20 -n`
 echo -e "${GREEN}Preparing config file ${NONE}";
 sudo mkdir $HOME/.cryptocashback
 
-printf "addnode=144.202.54.65:5520\naddnode=45.32.200.48:5520\naddnode=140.82.43.229:5520\naddnode=104.238.131.253:5520\n\nrpcuser=ccbcuser$USER\nrpcpassword=$PASSW\nrpcport=5522\nrpcallowip=127.0.0.1\ndaemon=1\nlisten=1\nserver=1\nmaxconnections=54\nexternalip=$EXTIP\nbind=$EXTIP:5520\nmasternode=1\nmasternodeprivkey=$MNKEY" >  $HOME/.cryptocashback/cryptocashback.conf
+printf "addnode=23.94.185.127:5520\naddnode=107.172.249.143:5520\naddnode=172.245.6.154:5520\naddnode=172.245.156.155:5520\n\nrpcuser=ccbcuser$USER\nrpcpassword=$PASSW\nrpcport=5522\nrpcallowip=127.0.0.1\ndaemon=1\nlisten=1\nserver=1\nmaxconnections=54\nexternalip=$EXTIP\nbind=$EXTIP:5520\nmasternode=1\nmasternodeprivkey=$MNKEY" >  $HOME/.cryptocashback/cryptocashback.conf
 cryptocashbackd
 watch cryptocashback-cli getinfo
