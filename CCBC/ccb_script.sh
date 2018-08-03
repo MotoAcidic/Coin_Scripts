@@ -20,11 +20,11 @@ cd
 #get wallet files
 wget https://github.com/CryptoCashBack-Hub/CCBC/releases/download/V1.0.0.0/CCBC-linux.tar.gz
 tar -xvf CCBC-linux.tar.gz
-rm CCBC-linux.tar.gz
+#rm CCBC-linux.tar.gz
 chmod +x cryptocashback*
 cp cryptocashback* /usr/local/bin
-rm ccb_script.sh
-rm cryptocashback*
+#rm ccb_script.sh
+#rm cryptocashback*
 ufw allow 5520/tcp
 
 #masternode input
