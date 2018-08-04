@@ -93,8 +93,8 @@ clear
 
 echo Now ready to setup AquilaX configuration file.
 
-RPCUSER=`pwgen -1 20 -n`
-RPCPASSWORD=`pwgen -1 20 -n`
+RPCUSER=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
+RPCPASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 EXTIP=`curl -s4 icanhazip.com`
 echo Please input your private key.
 read GENKEY
