@@ -10,7 +10,7 @@ Step 2 - Run the script
 chmod u+x aqx_install.sh
 ```
 ```
-./AQX_Install.sh
+./aqx_install.sh
 ```
 Step 3 - Start Aquila
 ```
