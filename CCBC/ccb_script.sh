@@ -158,14 +158,14 @@ sudo rm -rf cryptocashback-qt
 
 
 
-wget https://github.com/CryptoCashBack-Hub/CCB/releases/download/V1.0.0.0/CCB-linux.tar.gz
+wget https://github.com/CryptoCashBack-Hub/CCBC/releases/download/V1.0.0.0/CCBC-linux.tar.gz
 echo Download complete.
 echo Installing CCB.
-tar -xvf CCB-linux.tar.gz
+tar -xvf CCBC-linux.tar.gz
 chmod 775 ./cryptocashbackd
 chmod 775 ./cryptocashback-cli
 echo AquilaX install complete. 
-sudo rm -rf CCB-linux.tar.gz
+sudo rm -rf CCBC-linux.tar.gz
 
             ;;
         3)
