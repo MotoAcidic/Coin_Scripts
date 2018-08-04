@@ -80,15 +80,15 @@ sudo ufw status
 echo Server firewall configuration completed.
 
 echo Downloading AquilaX install files.
-wget https://github.com/CryptoCashBack-Hub/CCB/releases/download/V1.0.0.0/CCB-linux.tar.gz
+wget https://github.com/CryptoCashBack-Hub/CCBC/releases/download/V1.0.0.0/CCBC-linux.tar.gz
 echo Download complete.
 
 echo Installing CCB.
-tar -xvf CCB-linux.tar.gz
+tar -xvf CCBC-linux.tar.gz
 chmod 775 ./cryptocashbackd
 chmod 775 ./cryptocashback-cli
 echo cryptocashback install complete. 
-sudo rm -rf CCB-linux.tar.gz
+sudo rm -rf CCBC-linux.tar.gz
 clear
 
 echo Now ready to setup AquilaX configuration file.
@@ -129,7 +129,7 @@ clear
 ./cryptocashbackd -daemon
 clear
 echo cryptocashback configuration file created successfully. 
-echo cryptocashback Server Started Successfully using the command ./Aquilad -daemon
+echo cryptocashback Server Started Successfully using the command ./cryptocashbackd -daemon
 echo If you get a message asking to rebuild the database, please hit Ctr + C and run ./cryptocashbackd -daemon -reindex
 echo If you still have further issues please reach out to support in our Discord channel. 
 echo Please use the following Private Key when setting up your wallet: $GENKEY
