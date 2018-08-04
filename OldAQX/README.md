@@ -2,12 +2,12 @@ Installation guide for running the AQX VPS install script
 
 Step 1 - Download the install script
 ```
-wget -q https://raw.githubusercontent.com/turbowrx03/Guides/master/VPS%20Install/AQX_Install.sh
+wget -q https://raw.githubusercontent.com/MotoAcidic/Coin_Scripts/master/OldAQX/aqx_install.sh
 ```
 
 Step 2 - Run the script
 ```
-chmod u+x AQX_Install.sh
+chmod u+x aqx_install.sh
 ```
 ```
 ./AQX_Install.sh
