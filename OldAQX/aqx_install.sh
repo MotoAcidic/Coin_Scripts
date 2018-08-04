@@ -2,7 +2,7 @@
 
 HEIGHT=15
 WIDTH=40
-CHOICE_HEIGHT=5
+CHOICE_HEIGHT=6
 BACKTITLE="Aquila Masternode Setup Wizard"
 TITLE="Aquila VPS Setup"
 MENU="Choose one of the following options:"
@@ -11,7 +11,8 @@ OPTIONS=(1 "Install New VPS Server"
          2 "Reconfigure Existing VPS Server"
          3 "Start Aquila Masternode"
 	 4 "Stop Aquila Masternode"
-	 5 "Rebuild Aquila Masternode Index")
+	 5 "Rebuild Aquila Masternode Index"
+	 6 "Aquila Server Status")
 
 CHOICE=$(whiptail --clear\
 		--backtitle "$BACKTITLE" \
@@ -60,7 +61,7 @@ echo Now ready to setup AquilaX configuration file.
 
 RPCUSER=NEW_UUID=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 RPCPASSWORD=NEW_UUID=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
-VPSIP=NODEIP=$(curl -s4 icanhazip.com)
+VPSIP=$(curl -s4 icanhazip.com)
 echo Please input your private key.
 read GENKEY
 
@@ -100,7 +101,7 @@ echo If you still have further issues please reach out to support in our Discord
         2)
             RPCUSER=NEW_UUID=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 RPCPASSWORD=NEW_UUID=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
-VPSIP=NODEIP=$(curl -s4 icanhazip.com)
+VPSIP=$(curl -s4 icanhazip.com)
 echo Please input your private key.
 read GENKEY
 
@@ -139,13 +140,15 @@ echo If you still have further issues please reach out to support in our Discord
             ;;
         3)
             ./Aquilad -daemon
-echo "If you get a message asking to rebuild the database, please hit Ctr + C and rebuild Aquila Index. (Option 5)"
+		echo "If you get a message asking to rebuild the database, please hit Ctr + C and rebuild Aquila Index. (Option 5)"
             ;;
 	4)
             ./Aquila-cli stop
             ;;
 	5)
            ./Aquilad -daemon -reindex
-
             ;;
+        6)
+	   ./Aquila-cli getinfo
+	   ;;
 esac
