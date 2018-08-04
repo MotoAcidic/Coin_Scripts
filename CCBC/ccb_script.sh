@@ -95,7 +95,7 @@ echo Now ready to setup AquilaX configuration file.
 
 RPCUSER=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 RPCPASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
-VPSIP=$(curl -s4 icanhazip.com)
+EXTIP=`curl -s4 icanhazip.com`
 echo Please input your private key.
 read GENKEY
 
@@ -115,7 +115,7 @@ port=5520
 logtimestamps=1
 maxconnections=256
 masternode=1
-externalip=$VPSIP
+externalip=$EXTIP
 masternodeprivkey=$GENKEY
 addnode=108.224.49.202:5520
 addnode=107.172.249.143:5520
