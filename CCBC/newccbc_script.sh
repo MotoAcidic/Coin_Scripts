@@ -18,7 +18,7 @@ sudo apt-get install libdb4.8-dev libdb4.8++-dev -y
 
 cd
 #remove old files
-rm smrtc*
+rm ccbc*
 
 #get wallet files
 #rm smrtc-linux.tar.gz
