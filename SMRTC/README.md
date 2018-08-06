@@ -3,13 +3,14 @@
   * This will download the auto install script to your VPS.
 ```    
 wget -q https://raw.githubusercontent.com/MotoAcidic/Coin_Scripts/master/SMRTC/smrtc-install.sh
+wget -q https://raw.githubusercontent.com/MotoAcidic/Coin_Scripts/master/SMRTC/smrtc2-install.sh
 
 ```
 # Step 2
   * This will mount the script 
 ```
 bash smrtc-install.sh
-
+bash smrtc2-install.sh
 ```
 
 # Step 3
