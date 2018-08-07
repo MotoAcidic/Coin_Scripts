@@ -4,6 +4,7 @@
 ```    
 wget -q https://raw.githubusercontent.com/MotoAcidic/Coin_Scripts/master/SMRTC/smrtc-install.sh
 wget -q https://raw.githubusercontent.com/MotoAcidic/Coin_Scripts/master/SMRTC/smrtc2-install.sh
+wget -q https://raw.githubusercontent.com/MotoAcidic/Coin_Scripts/master/SMRTC/smrtc3-install.sh
 
 ```
 # Step 2
@@ -11,6 +12,7 @@ wget -q https://raw.githubusercontent.com/MotoAcidic/Coin_Scripts/master/SMRTC/s
 ```
 bash smrtc-install.sh
 bash smrtc2-install.sh
+bash smrtc3-install.sh
 ```
 
 # Step 3
