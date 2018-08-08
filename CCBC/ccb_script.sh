@@ -71,7 +71,7 @@ echo VPS Server prerequisites installed.
 
 echo Configuring server firewall.
 sudo apt-get install -y ufw
-sudo ufw allow 19551
+sudo ufw allow 5520
 sudo ufw allow ssh/tcp
 sudo ufw limit ssh/tcp
 sudo ufw logging on
@@ -85,8 +85,8 @@ echo Download complete.
 
 echo Installing CCB.
 tar -xvf CCBC-linux.tar.gz
-chmod 775 ./cryptocashbackd
-chmod 775 ./cryptocashback-cli
+chmod 775 ./ccbcd
+chmod 775 ./ccbc-cli
 echo cryptocashback install complete. 
 sudo rm -rf CCBC-linux.tar.gz
 clear
@@ -110,7 +110,7 @@ listen=1
 daemon=1
 staking=1
 rpcallowip=127.0.0.1
-rpcport=5522
+rpcport=15520
 port=5520
 logtimestamps=1
 maxconnections=256
@@ -124,9 +124,9 @@ addnode=172.245.6.154:5520
 
 EOF
 clear
-./cryptocashbackd -daemon
-./cryptocashback-cli stop
-./cryptocashbackd -daemon
+./ccbcd -daemon
+./ccbc-cli stop
+./ccbcd -daemon
 clear
 echo cryptocashback configuration file created successfully. 
 echo cryptocashback Server Started Successfully using the command ./cryptocashbackd -daemon
@@ -137,7 +137,7 @@ echo Please use the following Private Key when setting up your wallet: $GENKEY
 	    
     
         2)
-sudo ./cryptocashback-cli -daemon stop
+sudo ./ccbc-cli -daemon stop
 echo "! Stopping CCB Daemon !"
 
 echo Configuring server firewall.
@@ -152,9 +152,9 @@ echo Server firewall configuration completed.
 
 echo "! Removing CCB !"
 sudo rm -rf CCB_install.sh
-sudo rm -rf cryptocashbackd
-sudo rm -rf cryptocashback-cli
-sudo rm -rf cryptocashback-qt
+sudo rm -rf ccbcd
+sudo rm -rf ccbc-cli
+sudo rm -rf ccbc-qt
 
 
 
@@ -162,23 +162,23 @@ wget https://github.com/CryptoCashBack-Hub/CCBC/releases/download/V1.0.0.0/CCBC-
 echo Download complete.
 echo Installing CCB.
 tar -xvf CCBC-linux.tar.gz
-chmod 775 ./cryptocashbackd
-chmod 775 ./cryptocashback-cli
-echo AquilaX install complete. 
+chmod 775 ./ccbcd
+chmod 775 ./ccbc-cli
+echo CCBC install complete. 
 sudo rm -rf CCBC-linux.tar.gz
 
             ;;
         3)
-            ./cryptocashbackd -daemon
+            ./ccbcd -daemon
 		echo "If you get a message asking to rebuild the database, please hit Ctr + C and rebuild Aquila Index. (Option 6)"
             ;;
 	4)
-            ./cryptocashback-cli stop
+            ./ccbc-cli stop
             ;;
 	5)
-	    ./cryptocashback-cli getinfo
+	    ./ccbc-cli getinfo
 	    ;;
         6)
-	     ./cryptocashbackd -daemon -reindex
+	     ./ccbcd -daemon -reindex
             ;;
 esac
