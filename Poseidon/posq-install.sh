@@ -84,7 +84,7 @@ wget https://github.com/MotoAcidic/posq/releases/download/TEST/posq-linux.tar.gz
 echo Download complete.
 
 echo Installing Poseidon.
-tar -xvf AquilaX-linux.tar.gz
+tar -xvf posq-linux.tar.gz
 chmod 775 ./poseidond
 chmod 775 ./posedion-cli
 echo Poseidon install complete. 
