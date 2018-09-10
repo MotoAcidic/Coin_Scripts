@@ -71,7 +71,7 @@ echo VPS Server prerequisites installed.
 
 echo Configuring server firewall.
 sudo apt-get install -y ufw
-sudo ufw allow 51470
+sudo ufw allow 35550
 sudo ufw allow ssh/tcp
 sudo ufw limit ssh/tcp
 sudo ufw logging on
@@ -110,8 +110,8 @@ listen=1
 daemon=1
 staking=1
 rpcallowip=127.0.0.1
-rpcport=39796
-port=39799
+rpcport=35551
+port=35550
 logtimestamps=1
 maxconnections=256
 masternode=1
