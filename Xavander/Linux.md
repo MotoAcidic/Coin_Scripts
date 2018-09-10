@@ -81,6 +81,6 @@ addnode=172.245.6.154
 
 * From the terminal session, run the following commands
 ```
-watch ./xavander-cli getingo
+watch ./xavander-cli getinfo
 ```
 
