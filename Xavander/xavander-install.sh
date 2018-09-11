@@ -157,6 +157,20 @@ sudo rm -rf xavanderd
 sudo rm -rf xavander-cli
 sudo rm -rf xavander-qt
 
+cd /root/.xavander/
+sleep 3
+sudo rm -rf blocks
+sudo rm -rf blocks
+sudo rm -rf chainstate
+sudo rm -rf fee_estimates.dat
+sudo rm -rf masternode.conf
+sudo rm -rf mnpayments.dat
+sudo rm -rf peers.dat
+sudo rm -rf sporks
+sudo rm -rf zerocoin
+cd ..
+sleep 2
+
 
 
 wget https://github.com/MotoAcidic/Xavander-Core/releases/download/v1.0.0.1/Xavander-Linux.tar.gz
