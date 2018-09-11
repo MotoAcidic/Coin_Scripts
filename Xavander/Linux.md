@@ -65,6 +65,7 @@ masternodeprivkey=<masternode private key>
 addnode=23.94.183.5
 addnode=107.172.249.143
 addnode=172.245.6.154
+addnode=107.174.66.241
 ```
 
 * Get the latest node seeds from 
