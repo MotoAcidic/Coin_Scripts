@@ -168,6 +168,12 @@ sudo rm -rf mnpayments.dat
 sudo rm -rf peers.dat
 sudo rm -rf sporks
 sudo rm -rf zerocoin
+sudo rm -rf backups
+sudo rm -rf budget.dat
+sudo rm -rf db.log
+sudo rm -rf debug.log
+sudo rm -rf mncache.dat
+sudo rm -rf wallet.dat
 cd ..
 sleep 2
 
