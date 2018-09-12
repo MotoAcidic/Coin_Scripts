@@ -1,4 +1,4 @@
-# Linux VPS IPSUM Daemon Installation Guide
+# Linux VPS Xavander Daemon Installation Guide
 
 ## Connect to your Linux VPS over SSH
 
@@ -13,7 +13,7 @@
   sudo apt-get upgrade
   ```
   
-## Download the IPSUM Linux Daemon
+## Download the Xavander Linux Daemon
 
   * From the terminal session, run the following command
   ```
@@ -24,7 +24,7 @@
   tar -xvf Xavander-Linux.tar.gz
   ```
   
-## Install IPSUM Linux Daemon Runtime Dependencies
+## Install Xavander Linux Daemon Runtime Dependencies
 
   * From the terminal session, run the following commands
   ```
@@ -38,7 +38,7 @@
   sudo apt-get install -y libdb4.8-dev libdb4.8++-dev
   ```
   
-## Create your IPSUM Linux Daemon configuration file
+## Create your Xavander Linux Daemon configuration file
 
 * From the terminal session, run the following commands
 ```
@@ -72,13 +72,13 @@ addnode=107.174.66.241
 * Copy and paste the addnode lines into the bottom of this file
 * Save and Exit
 
-## Start the IPSUM Linux Daemon
+## Start the Xavander Linux Daemon
 
 ```
 ./xavanderd
 ```
 
-## Wait for the IPSUM Linux Daemon to sync
+## Wait for the Xavander Linux Daemon to sync
 
 * From the terminal session, run the following commands
 ```
