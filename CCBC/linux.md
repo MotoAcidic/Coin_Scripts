@@ -17,7 +17,7 @@
 
   * From the terminal session, run the following command
   ```
-  wget https://github.com/CryptoCashBack-Hub/CCBC/releases/download/v1.0.0.0/CCBC-linux.tar.gz
+  wget https://github.com/CryptoCashBack-Hub/CCBC/releases/download/v1.0.0.1/CCBC-linux.tar.gz
   ```
   * From the terminal session, run the following command
   ```
