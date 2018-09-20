@@ -64,7 +64,7 @@ externalip=<externalip>:39795
 masternodeprivkey=<masternode private key>
 addnode=45.77.200.8
 addnode=23.95.213.138
-addnode=
+addnode=149.28.57.216
 ```
 
 * Get the latest node seeds from 
