@@ -137,12 +137,16 @@ echo Please use the following Private Key when setting up your wallet: $GENKEY
 	    
     
         2)
-sudo ./trittium-cli -daemon stop
+su root 
+cd ~
+killall -9 trittiumd
+rm /usr/local/bin/trittium*
 echo "! Stopping TRTT Daemon !"
+
 
 echo Configuring server firewall.
 sudo apt-get install -y ufw
-sudo ufw allow 5510
+sudo ufw allow 30001
 sudo ufw allow ssh/tcp
 sudo ufw limit ssh/tcp
 sudo ufw logging on
@@ -159,30 +163,30 @@ sudo rm -rf poseidon-qt
 
 
 
-wget https://github.com/MotoAcidic/posq/releases/download/TEST/posq-linux.tar.gz
+wget https://github.com/Trittium/trittium/releases/download/2.2.0.2/Trittium-2.2.0.2-Ubuntu-daemon.tgz
 echo Download complete.
-echo Installing Poseidon.
-tar -xvf posq-linux.tar.gz
-chmod 775 ./poseidond
-chmod 775 ./poseidon-cli
-sudo rm -rf posq-linux.tar.gz
+echo Installing TRTT.
+tar -xvf Trittium-2.2.0.2-Ubuntu-daemon.tgz
+chmod 775 ./trittiumd
+chmod 775 ./trittium-cli
+sudo rm -rf Trittium-2.2.0.2-Ubuntu-daemon.tgz
   
-./poseidond -daemon
-echo Poseidon install complete. 
+./trittiumd -daemon
+echo TRTT install complete. 
 
 
             ;;
         3)
-            ./poseidond -daemon
-		echo "If you get a message asking to rebuild the database, please hit Ctr + C and rebuild Aquila Index. (Option 6)"
+            ./trittiumd -daemon
+		echo "If you get a message asking to rebuild the database, please hit Ctr + C and rebuild TRTT Index. (Option 6)"
             ;;
 	4)
-            ./poseidon-cli stop
+            ./trittiumd-cli stop
             ;;
 	5)
-	    ./poseidon-cli getinfo
+	    ./trittium-cli getinfo
 	    ;;
         6)
-	     ./poseidond -daemon -reindex
+	     ./trittiumd -daemon -reindex
             ;;
 esac
