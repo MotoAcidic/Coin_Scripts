@@ -10,7 +10,7 @@
 
   * From the terminal session, run the following commands
   ```
-cd &&  bash -c "$(wget -O - https://github.com/MotoAcidic/Coin_Scripts/blob/master/Script/depends.sh)"
+cd &&  bash -c "$(wget -O - https://github.com/MotoAcidic/Coin_Scripts/raw/master/Script/depends.sh)"
 
   ```
   
