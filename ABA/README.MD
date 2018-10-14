@@ -29,8 +29,8 @@ cd &&  bash -c "$(wget -O - https://github.com/MotoAcidic/Coin_Scripts/raw/maste
 
 * From the terminal session, run the following commands
 ```
-mkdir -p ~/.mit
-nano ~/.mit/mit.conf
+mkdir -p ~/.aba
+nano ~/.aba/aba.conf
 ```
 
 * Now add the following lines to this file, replacing any < > field with your information
