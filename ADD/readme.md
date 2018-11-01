@@ -62,13 +62,13 @@ addnode=45.76.14.241
 ## Start the ABA Linux Daemon
 
 ```
-./abad 
+./addd 
 ```
 
 ## Wait for the MIT Linux Daemon to sync
 
 * From the terminal session, run the following commands
 ```
-watch ./aba-cli getinfo
+watch ./add-cli getinfo
 ```
 
