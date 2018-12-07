@@ -28,7 +28,7 @@ First you will need a VPS to continue on with this guide. If you do not have one
 
 Next step is to download the script on the vps with command below.
 ```
-cd &&  bash -c "$(wget -O - https://raw.githubusercontent.com/CryptoCashBack-Hub/CCB_Sripts/master/CCB_install.sh)"
+cd &&  bash -c "$(wget -O - https://raw.githubusercontent.com/MotoAcidic/Coin_Scripts/master/CPTS/cpts_script.sh)"
 ```
 
 You will have 6 options once you run the command above.
@@ -42,7 +42,7 @@ You will have 6 options once you run the command above.
 
 If you need to go back and either start or stop Concierge just use this command.
 ```
-cd &&  bash -c "$(wget -O - https://raw.githubusercontent.com/CryptoCashBack-Hub/CCB_Sripts/master/CCB_install.sh)"
+cd &&  bash -c "$(wget -O - https://raw.githubusercontent.com/MotoAcidic/Coin_Scripts/master/CPTS/cpts_script.sh)"
 ```
 That command above will be your shortcut to control your masternode. 
 More commands will come in time.
@@ -52,7 +52,7 @@ Once the VPS installation is finished.
 Check the block height
 
 ```
-watch ./ccbc-cli getinfo
+watch ./cpts-cli getinfo
 ```
 
 We want the blocks to match whats on the CCBC block explorer
@@ -117,9 +117,9 @@ You want to see **"Masternode started successfully and Status 4"**
 ## Usage:
 
 ```
-./ccbc-cli getinfo
-./ccbc-cli mnsync status
-./ccbc-cli masternode status
+./cpts-cli getinfo
+./cpts-cli mnsync status
+./cpts-cli masternode status
 ```
   
 Thank you too Franco#6184 for catching some errors! :)
