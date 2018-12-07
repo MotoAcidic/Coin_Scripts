@@ -80,18 +80,18 @@ sudo ufw status
 echo Server firewall configuration completed.
 
 echo Downloading AquilaX install files.
-wget https://github.com/CryptoCashBack-Hub/CCBC/releases/download/v1.0.0.0/CCBC-linux.tar.gz
+wget https://crypto-points.io/w/cpts-linux.tgz
 echo Download complete.
 
-echo Installing CCB.
-tar -xvf CCBC-linux.tar.gz
-chmod 775 ./ccbd
-chmod 775 ./ccbc-cli
-echo ccbc install complete. 
-sudo rm -rf CCBC-linux.tar.gz
+echo Installing CPTS.
+tar -xvf cpts-linux.tgz
+chmod 775 ./cptsd
+chmod 775 ./cpts-cli
+echo cpts install complete. 
+sudo rm -rf cpts-linux.tgz
 clear
 
-echo Now ready to setup AquilaX configuration file.
+echo Now ready to setup CCBC configuration file.
 
 RPCUSER=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 RPCPASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
@@ -99,9 +99,9 @@ VPSIP=$(curl -s4 icanhazip.com)
 echo Please input your private key.
 read GENKEY
 
-mkdir -p /root/.ccbc && touch /root/.ccbc/ccbc.conf
+mkdir -p /root/.cpts && touch /root/.cpts/cpts.conf
 
-cat << EOF > /root/.ccbc/ccbc.conf
+cat << EOF > /root/.cpts/cpts.conf
 rpcuser=$RPCUSER
 rpcpassword=$RPCPASSWORD
 rpcallowip=127.0.0.1
@@ -110,38 +110,38 @@ listen=1
 daemon=1
 staking=1
 rpcallowip=127.0.0.1
-rpcport=5520
-port=15520
+rpcport=44332
+port=44331
 logtimestamps=1
 maxconnections=256
 masternode=1
 externalip=$VPSIP
 masternodeprivkey=$GENKEY
-addnode=108.224.49.202:5520
-addnode=107.172.249.143:5520
-addnode=23.94.183.5:5520
-addnode=172.245.6.154:5520
+addnode=140.82.34.79:44331
+addnode=45.77.141.198:44331
+addnode=199.247.5.185:44331
+addnode=45.77.55.81:44331
 EOF
 clear
-./ccbcd -daemon
-./ccbc-cli stop
-./ccbcd -daemon
+./cptsd -daemon
+./cpts-cli stop
+./cptsd -daemon
 clear
-echo cryptocashback configuration file created successfully. 
-echo cryptocashback Server Started Successfully using the command ./ccbcd -daemon
-echo If you get a message asking to rebuild the database, please hit Ctr + C and run ./ccbcd -daemon -reindex
+echo cpts configuration file created successfully. 
+echo cpts Server Started Successfully using the command ./cptsd -daemon
+echo If you get a message asking to rebuild the database, please hit Ctr + C and run ./cptsd -daemon -reindex
 echo If you still have further issues please reach out to support in our Discord channel. 
 echo Please use the following Private Key when setting up your wallet: $GENKEY
             ;;
 	    
     
         2)
-sudo ./ccbcd-cli -daemon stop
+sudo ./cptsd-cli -daemon stop
 echo "! Stopping CCB Daemon !"
 
 echo Configuring server firewall.
 sudo apt-get install -y ufw
-sudo ufw allow 5520
+sudo ufw allow 44331
 sudo ufw allow ssh/tcp
 sudo ufw limit ssh/tcp
 sudo ufw logging on
@@ -149,35 +149,35 @@ echo "y" | sudo ufw enable
 sudo ufw status
 echo Server firewall configuration completed.
 
-echo "! Removing CCB !"
-sudo rm -rf CCB_install.sh
-sudo rm -rf ccbcd
-sudo rm -rf ccbc-cli
-sudo rm -rf ccbc-qt
+echo "! Removing CPTS !"
+sudo rm -rf cpts_script.sh
+sudo rm -rf cptsd
+sudo rm -rf cpts-cli
+sudo rm -rf cpts-qt
 
 
 
-wget https://github.com/CryptoCashBack-Hub/CCBC/releases/download/v1.0.0.0/CCBC-linux.tar.gz
+wget https://crypto-points.io/w/cpts-linux.tgz
 echo Download complete.
-echo Installing CCB.
-tar -xvf CCB-linux.tar.gz
-chmod 775 ./ccbd
-chmod 775 ./ccbc-cli
-echo CCBC install complete. 
-sudo rm -rf CCB-linux.tar.gz
+echo Installing cpts.
+tar -xvf cpts-linux.tgz
+chmod 775 ./cptsd
+chmod 775 ./cpts-cli
+echo cpts install complete. 
+sudo rm -rf cpts-linux.tgz
 
             ;;
         3)
-            ./ccbcd -daemon
-		echo "If you get a message asking to rebuild the database, please hit Ctr + C and rebuild Aquila Index. (Option 6)"
+            ./cptsd -daemon
+		echo "If you get a message asking to rebuild the database, please hit Ctr + C and rebuild cpts Index. (Option 6)"
             ;;
 	4)
-            ./ccbc-cli stop
+            ./cpts-cli stop
             ;;
 	5)
-	    ./ccbc-cli getinfo
+	    ./cpts-cli getinfo
 	    ;;
         6)
-	     ./ccbcd -daemon -reindex
+	     ./cptsd -daemon -reindex
             ;;
 esac
