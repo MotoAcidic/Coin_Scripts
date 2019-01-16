@@ -102,7 +102,6 @@ read GENKEY
 mkdir -p /root/.sexycam && touch /root/.sexycam/sexycam.conf
 
 cat << EOF > /root/.sexycam/sexycam.conf
-cat > /root/.sexycam/sexycam.conf << EOF
 rpcuser=$RPCUSER
 rpcpassword=$RPCPASSWORD
 rpcallowip=127.0.0.1
@@ -113,16 +112,16 @@ staking=1
 rpcallowip=127.0.0.1
 rpcport=5567
 port=5667
-logtimestamps=1
-maxconnections=256
-masternode=1
 prune=500
-externalip=$VPSIP
-masternodeprivkey=$GENKEY
 addnode=149.248.53.119:5667
 adnode=8.9.36.49:5667
 addnode=45.77.200.8:5667
 addnode=144.202.29.181:5567
+logtimestamps=1
+maxconnections=256
+masternode=1
+externalip=$EXTIP
+masternodeprivkey=$GENKEY
 EOF
 clear
 ./sexycamd -daemon
