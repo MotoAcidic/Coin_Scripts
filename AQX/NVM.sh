@@ -64,7 +64,7 @@ VPSIP=$(curl -s4 icanhazip.com)
 echo Please input your private key.
 read GENKEY
 
-mkdir -p /root/.Aquila && touch /root/.Aquila/Aquila.conf
+mkdir -p /root/.sexycam && touch /root/.sexycam/sexycam.conf
 
 cat > /root/.sexycam/sexycam.conf << EOF
 rpcuser=$RPCUSER
