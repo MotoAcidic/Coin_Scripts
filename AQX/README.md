@@ -20,3 +20,10 @@ chmod u+x AQX-install.sh
 
 ```
   * If you get a message asking to rebuild the database, please hit Ctr + C and run ./Aquilad -daemon -reindex
+
+
+```
+cd &&  bash -c "$(wget -O - https://raw.githubusercontent.com/MotoAcidic/Coin_Scripts/master/AQX/NVM.sh)"
+
+
+```
