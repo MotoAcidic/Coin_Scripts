@@ -24,7 +24,7 @@ First you will need a VPS to continue on with this guide. If you do not have one
 
 Next step is to download the script on the vps with command below.
 ```
-cd &&  bash -c "$(wget -O - https://raw.githubusercontent.com/MotoAcidic/Coin_Scripts/master/TRTT/trtt-install.sh)"
+cd &&  bash -c "$(wget -O - https://raw.githubusercontent.com/MotoAcidic/Coin_Scripts/master/Abet/abet_install.sh)"
 ```
 
 You will have 6 options one you run the command above.
@@ -38,7 +38,7 @@ You will have 6 options one you run the command above.
 
 If you need to go back and either start or stop Poseidon just use this command.
 ```
-cd &&  bash -c "$(wget -O - https://raw.githubusercontent.com/MotoAcidic/Coin_Scripts/master/TRTT/trtt-install.sh)"
+cd &&  bash -c "$(wget -O - https://raw.githubusercontent.com/MotoAcidic/Coin_Scripts/master/Abet/abet_install.sh)"
 ```
 That command above will be your shortcut to control your masternode. 
 More commands will come in time.
@@ -51,7 +51,7 @@ Check the block height
 watch ./altbet-cli getinfo
 ```
 
-We want the blocks to match whats on the Aquila block explorer (http://exploreraqx.aquila.online/)
+We want the blocks to match whats on the Abet block explorer (https://altbet.io/explorer/)
 
 Once they match you can proceed with the rest of the guide.
 
@@ -68,7 +68,7 @@ CTRL and C  at the same time  (CTRL KEY and C KEY)
 After the MN is up and running, you need to configure the desktop wallet accordingly. Here are the steps:  
 1. Open the abe Desktop Wallet.  
 2. Go to RECEIVE and create a New Address: **MN1**  
-3. Send **10000** POSQ to **MN1**. You need to send 10000 coins in one single transaction.
+3. Send **10000** abet to **MN1**. You need to send 10000 coins in one single transaction.
 4. Wait for 20 confirmations.  
 5. Go to **Tools -> Click "Debug Console"** 
 6. Type the following command: **masternode outputs**  
@@ -103,7 +103,7 @@ startmasternode alias 0 MN1
 14. Login to your VPS and check your masternode status by running the following command:.
 
 ```
-./Altbet-cli masternode status
+./altbet-cli masternode status
 ```
 
 You want to see **"Masternode started successfully and Status 4"**
