@@ -10,10 +10,10 @@ MENU="Choose one of the following options:"
 
 OPTIONS=(1 "Install New VPS Server"
          2 "Update to new version VPS Server"
-         3 "Start TRTT Masternode"
-	 4 "Stop TRTT Masternode"
-	 5 "TRTT Server Status"
-	 6 "Rebuild TRTT Masternode Index")
+         3 "Start Abet Masternode"
+	 4 "Stop Abet Masternode"
+	 5 "Abet Server Status"
+	 6 "Rebuild Abet Masternode Index")
 
 
 CHOICE=$(whiptail --clear\
@@ -72,7 +72,7 @@ echo VPS Server prerequisites installed.
 
 echo Configuring server firewall.
 sudo apt-get install -y ufw
-sudo ufw allow 30001
+sudo ufw allow 2238
 sudo ufw allow ssh/tcp
 sudo ufw limit ssh/tcp
 sudo ufw logging on
@@ -80,20 +80,20 @@ echo "y" | sudo ufw enable
 sudo ufw status
 echo Server firewall configuration completed.
 
-echo Downloading Poseidon install files.
-wget https://github.com/Trittium/trittium/releases/download/2.2.0.2/Trittium-2.2.0.2-Ubuntu-daemon.tgz
+echo Downloading Abet install files.
+wget https://github.com/MotoAcidic/Coin_Scripts/releases/download/abet/ALTBET-linux.tar.gz
 echo Download complete.
 
 echo Installing Poseidon.
-tar -xvf Trittium-2.2.0.2-Ubuntu-daemon.tgz
-chmod 775 ./trittiumd
-chmod 775 ./trittium-cli
+tar -xvf ALTBET-linux.tar.gz
+chmod 775 ./altbetd
+chmod 775 ./altbet-cli
 echo TRTT install complete. 
-sudo rm -rf Trittium-2.2.0.2-Ubuntu-daemon.tgz
+sudo rm -rf ALTBET-linux.tar.gz
 clear
 
 
-echo Now ready to setup TRTT configuration file.
+echo Now ready to setup Abet configuration file.
 
 RPCUSER=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 RPCPASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
@@ -101,9 +101,9 @@ EXTIP=`curl -s4 icanhazip.com`
 echo Please input your private key.
 read GENKEY
 
-mkdir -p /root/.trittium && touch /root/.trittium/trittium.conf
+mkdir -p /root/.altbet && touch /root/.altbet/altbet.conf
 
-cat << EOF > /root/.trittium/trittium.conf
+cat << EOF > /root/.altbet/altbet.conf
 rpcuser=$RPCUSER
 rpcpassword=$RPCPASSWORD
 rpcallowip=127.0.0.1
@@ -112,8 +112,8 @@ listen=1
 daemon=1
 staking=1
 rpcallowip=127.0.0.1
-rpcport=30002
-port=30001
+rpcport=2239
+port=2238
 logtimestamps=1
 maxconnections=256
 masternode=1
@@ -122,14 +122,14 @@ masternodeprivkey=$GENKEY
 EOF
 clear
 
-./trittiumd -daemon
-./trittium-cli stop
+./altbetd -daemon
+./altbet-cli stop
 sleep 10s # Waits 10 seconds
-./trittiumd -daemon
+./altbet -daemon
 clear
-echo TRTT configuration file created successfully. 
-echo TRTT Server Started Successfully using the command ./trittiumd -daemon
-echo If you get a message asking to rebuild the database, please hit Ctr + C and run ./trittiumd -daemon -reindex
+echo Abet configuration file created successfully. 
+echo Abet Server Started Successfully using the command ./altbetd -daemon
+echo If you get a message asking to rebuild the database, please hit Ctr + C and run ./altbetd -daemon -reindex
 echo If you still have further issues please reach out to support in our Discord channel. 
 echo Please use the following Private Key when setting up your wallet: $GENKEY
             ;;
@@ -138,14 +138,14 @@ echo Please use the following Private Key when setting up your wallet: $GENKEY
         2)
 su root 
 cd ~
-killall -9 trittiumd
-rm /usr/local/bin/trittium*
-echo "! Stopping TRTT Daemon !"
+killall -9 altbetd
+rm /usr/local/bin/altbet*
+echo "! Stopping Abet Daemon !"
 
 
 echo Configuring server firewall.
 sudo apt-get install -y ufw
-sudo ufw allow 30001
+sudo ufw allow 2238
 sudo ufw allow ssh/tcp
 sudo ufw limit ssh/tcp
 sudo ufw logging on
@@ -153,39 +153,37 @@ echo "y" | sudo ufw enable
 sudo ufw status
 echo Server firewall configuration completed.
 
-echo "! Removing Poseidon !"
-sudo rm -rf posq-install.sh*
-sudo rm -rf ubuntu.zip*
-sudo rm -rf poseidond
-sudo rm -rf poseidon-cli
-sudo rm -rf poseidon-qt
+echo "! Removing Abet !"
+sudo rm -rf altbetd
+sudo rm -rf altbet-cli
+sudo rm -rf altbet-qt
 
 
 
-wget https://github.com/Trittium/trittium/releases/download/2.2.0.2/Trittium-2.2.0.2-Ubuntu-daemon.tgz
+wget https://github.com/MotoAcidic/Coin_Scripts/releases/download/abet/ALTBET-linux.tar.gz
 echo Download complete.
-echo Installing TRTT.
-tar -xvf Trittium-2.2.0.2-Ubuntu-daemon.tgz
-chmod 775 ./trittiumd
-chmod 775 ./trittium-cli
-sudo rm -rf Trittium-2.2.0.2-Ubuntu-daemon.tgz
+echo Installing Abet.
+tar -xvf ALTBET-linux.tar.gz
+chmod 775 ./altbetd
+chmod 775 ./altbetd-cli
+sudo rm -rf ALTBET-linux.tar.gz
   
-./trittiumd -daemon
-echo TRTT install complete. 
+./altbetd -daemon
+echo Abet install complete. 
 
 
             ;;
         3)
-            ./trittiumd -daemon
+            ./altbetd -daemon
 		echo "If you get a message asking to rebuild the database, please hit Ctr + C and rebuild TRTT Index. (Option 6)"
             ;;
 	4)
-            ./trittiumd-cli stop
+            ./altbetd-cli stop
             ;;
 	5)
-	    ./trittium-cli getinfo
+	    ./altbet-cli getinfo
 	    ;;
         6)
-	     ./trittiumd -daemon -reindex
+	     ./altbetd -daemon -reindex
             ;;
 esac
