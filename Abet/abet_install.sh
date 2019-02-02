@@ -4,7 +4,7 @@
 HEIGHT=15
 WIDTH=40
 CHOICE_HEIGHT=6
-BACKTITLE="TRTT Masternode Setup Wizard"
+BACKTITLE="ABET Masternode Setup Wizard"
 TITLE="TRTT VPS Setup"
 MENU="Choose one of the following options:"
 
