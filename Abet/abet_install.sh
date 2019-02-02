@@ -157,6 +157,11 @@ echo "! Removing Abet !"
 sudo rm -rf altbetd
 sudo rm -rf altbet-cli
 sudo rm -rf altbet-qt
+cd /root/.abet
+sudo rm -rf blocks
+sudo rm -rf chainstate
+cd
+sleep 5
 
 
 
@@ -167,8 +172,10 @@ tar -xvf ALTBET-linux.tar.gz
 chmod 775 ./altbetd
 chmod 775 ./altbetd-cli
 sudo rm -rf ALTBET-linux.tar.gz
-  
+sleep 5
+
 ./altbetd -daemon
+watch ./altbet-cli getinfo
 echo Abet install complete. 
 
 
