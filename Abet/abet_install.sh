@@ -5,7 +5,7 @@ HEIGHT=15
 WIDTH=40
 CHOICE_HEIGHT=6
 BACKTITLE="ABET Masternode Setup Wizard"
-TITLE="TRTT VPS Setup"
+TITLE="ABET VPS Setup"
 MENU="Choose one of the following options:"
 
 OPTIONS=(1 "Install New VPS Server"
@@ -136,7 +136,7 @@ echo Please use the following Private Key when setting up your wallet: $GENKEY
 	    
     
         2)
-sudo ./altbet-cli -daemon stop
+killall -9 altbetd
 echo "! Stopping ABET Daemon !"
 
 echo Configuring server firewall.
@@ -150,31 +150,32 @@ sudo ufw logging on
 echo "y" | sudo ufw enable
 sudo ufw status
 echo Server firewall configuration completed.
+rm -rf altbetd
+rm -rf altbet-cli
 
 wget https://github.com/MotoAcidic/Coin_Scripts/releases/download/abet/altbet-v1.3.10-ubu1604.tar.gz
 echo Download complete.
 echo Installing ABET.
 tar -xvf altbet-v1.3.10-ubu1604.tar.gz
-rm -rf altbetd
-rm -rf altbet-cli
 chmod 775 ./altbetd
 chmod 775 ./altbet-cli
-cd
 sudo rm -rf altbet-v1.3.10-ubu1604.tar.gz
+
 cd /root/.altbet
 
-rm -rf blocks
-rm -rf chainstate
-rm -rf backups
-rm -rf db.log
-rm -rf budget.dat
-rm -rf debug.log
-rm -rf fee_estimates.dat
-rm -rf peers.dat
-rm -rf mnpayments.dat
-rm -rf mncache.dat
+sudo rm -rf blocks
+sudo rm -rf chainstate
+sudo rm -rf backups
+sudo rm -rf db.log
+sudo rm -rf budget.dat
+sudo rm -rf debug.log
+sudo rm -rf fee_estimates.dat
+sudo rm -rf peers.dat
+sudo rm -rf mnpayments.dat
+sudorm -rf mncache.dat
 
 wget https://github.com/altbet/bootstraps/releases/download/179660/bootstrap.zip
+sudo apt-get install unzip
 unzip bootstrap.zip
 rm -rf bootstrap.zip
 cd
