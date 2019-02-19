@@ -136,16 +136,14 @@ echo Please use the following Private Key when setting up your wallet: $GENKEY
 	    
     
         2)
-su root 
-cd ~
-killall -9 altbetd
-rm /usr/local/bin/altbet*
-echo "! Stopping Abet Daemon !"
-
+sudo ./altbet-cli -daemon stop
+echo "! Stopping ABET Daemon !"
 
 echo Configuring server firewall.
 sudo apt-get install -y ufw
 sudo ufw allow 2238
+sudo ufw allow 2238/tcp
+sudo ufw allow 2238/udp
 sudo ufw allow ssh/tcp
 sudo ufw limit ssh/tcp
 sudo ufw logging on
@@ -153,30 +151,37 @@ echo "y" | sudo ufw enable
 sudo ufw status
 echo Server firewall configuration completed.
 
-echo "! Removing Abet !"
-sudo rm -rf altbetd
-sudo rm -rf altbet-cli
-sudo rm -rf altbet-qt
-cd /root/.abet
-sudo rm -rf blocks
-sudo rm -rf chainstate
-cd
-sleep 5
-
-
-
 wget https://github.com/MotoAcidic/Coin_Scripts/releases/download/abet/altbet-v1.3.10-ubu1604.tar.gz
 echo Download complete.
-echo Installing Abet.
+echo Installing ABET.
 tar -xvf altbet-v1.3.10-ubu1604.tar.gz
+rm -rf altbetd
+rm -rf altbet-cli
 chmod 775 ./altbetd
-chmod 775 ./altbetd-cli
+chmod 775 ./altbet-cli
+cd
 sudo rm -rf altbet-v1.3.10-ubu1604.tar.gz
-sleep 5
+cd /root/.altbet
+
+rm -rf blocks
+rm -rf chainstate
+rm -rf backups
+rm -rf db.log
+rm -rf budget.dat
+rm -rf debug.log
+rm -rf fee_estimates.dat
+rm -rf peers.dat
+rm -rf mnpayments.dat
+rm -rf mncache.dat
+
+wget https://github.com/altbet/bootstraps/releases/download/179660/bootstrap.zip
+unzip bootstrap.zip
+rm -rf bootstrap.zip
+cd
 
 ./altbetd -daemon
-watch ./altbet-cli getinfo
-echo Abet install complete. 
+cd
+echo ABET install complete. 
 
 
             ;;
