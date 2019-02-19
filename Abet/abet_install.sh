@@ -178,6 +178,7 @@ wget https://github.com/altbet/bootstraps/releases/download/179660/bootstrap.zip
 sudo apt-get install unzip
 unzip bootstrap.zip
 rm -rf bootstrap.zip
+__MACOSX
 cd
 
 ./altbetd -daemon
