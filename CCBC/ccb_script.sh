@@ -137,28 +137,33 @@ echo Please use the following Private Key when setting up your wallet: $GENKEY
 	    
     
         2)
-sudo ./ccbcd-cli -daemon stop
-sudo killall -9 ccbcd
-echo "! Stopping CCB Daemon !"
+killall -9 ccbcd
+echo "! Stopping CCBCD Daemon !"
 
 echo Configuring server firewall.
 sudo apt-get install -y ufw
 sudo ufw allow 5520
+sudo ufw allow 5520/tcp
+sudo ufw allow 5520/udp
 sudo ufw allow ssh/tcp
 sudo ufw limit ssh/tcp
 sudo ufw logging on
 echo "y" | sudo ufw enable
 sudo ufw status
 echo Server firewall configuration completed.
+rm -rf ccbcd
+rm -rf ccbc-cli
 
-echo "! Removing CCB !"
-sudo rm -rf ccbc-1.2.0
-sudo rm -rf CCB_install.sh
-sudo rm -rf ccbcd
-sudo rm -rf ccbc-cli
-sudo rm -rf ccbc-qt
+wget https://github.com/CryptoCashBack-Hub/Backups/blob/master/v1.2.0.0/CCBC-linux.tar.gz
+echo Download complete.
+echo Installing CCBC.
+tar -xvf CCBC-linux.tar.gz
+chmod 775 ./ccbd
+chmod 775 ./ccbc-cli
+sudo rm -rf CCBC-linux.tar.gz
 
-cd /root/.ccbc
+cd /root/.altbet
+
 sudo rm -rf blocks
 sudo rm -rf chainstate
 sudo rm -rf backups
@@ -171,14 +176,10 @@ sudo rm -rf mnpayments.dat
 sudorm -rf mncache.dat
 cd
 
-wget https://github.com/CryptoCashBack-Hub/Backups/blob/master/v1.2.0.0/CCBC-linux.tar.gz
-echo Download complete.
-echo Installing CCB.
-tar -xvf CCBC-linux.tar.gz
-chmod 775 ./ccbd
-chmod 775 ./ccbc-cli
+./ccbcd -daemon
+cd
 echo CCBC install complete. 
-sudo rm -rf CCB-linux.tar.gz
+
 
             ;;
         3)
