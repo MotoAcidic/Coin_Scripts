@@ -81,7 +81,7 @@ sudo ufw status
 echo Server firewall configuration completed.
 
 echo Downloading AquilaX install files.
-wget https://github.com/CryptoCashBack-Hub/Backups/blob/master/v1.2.0.0/CCBC-linux.tar.gz
+wget https://github.com/CryptoCashBack-Hub/Backups/releases/download/test/CCBC-linux.tar.gz
 echo Download complete.
 
 echo Installing CCB.
@@ -154,7 +154,7 @@ echo Server firewall configuration completed.
 rm -rf ccbcd
 rm -rf ccbc-cli
 
-wget https://github.com/CryptoCashBack-Hub/Backups/blob/master/v1.2.0.0/CCBC-linux.tar.gz
+wget https://github.com/CryptoCashBack-Hub/Backups/releases/download/test/CCBC-linux.tar.gz
 echo Download complete.
 echo Installing CCBC.
 tar -xvf CCBC-linux.tar.gz
