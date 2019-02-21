@@ -173,7 +173,7 @@ sudo rm -rf debug.log
 sudo rm -rf fee_estimates.dat
 sudo rm -rf peers.dat
 sudo rm -rf mnpayments.dat
-sudorm -rf mncache.dat
+sudo rm -rf mncache.dat
 cd
 
 ./ccbcd -daemon
