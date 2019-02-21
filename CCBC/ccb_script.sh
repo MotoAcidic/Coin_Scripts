@@ -162,7 +162,7 @@ chmod 775 ./ccbd
 chmod 775 ./ccbc-cli
 sudo rm -rf CCBC-linux.tar.gz
 
-cd /root/.altbet
+cd /root/.ccbc
 
 sudo rm -rf blocks
 sudo rm -rf chainstate
