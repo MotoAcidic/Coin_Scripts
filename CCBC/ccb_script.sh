@@ -174,7 +174,7 @@ cd
 wget https://github.com/CryptoCashBack-Hub/Backups/blob/master/v1.2.0.0/CCBC-linux.tar.gz
 echo Download complete.
 echo Installing CCB.
-tar -xvf CCB-linux.tar.gz
+tar -xvf CCBC-linux.tar.gz
 chmod 775 ./ccbd
 chmod 775 ./ccbc-cli
 echo CCBC install complete. 
