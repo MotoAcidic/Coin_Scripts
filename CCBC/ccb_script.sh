@@ -71,7 +71,8 @@ echo VPS Server prerequisites installed.
 
 echo Configuring server firewall.
 sudo apt-get install -y ufw
-sudo ufw allow 19551
+sudo ufw allow 5520
+sudo ufw allow 15520
 sudo ufw allow ssh/tcp
 sudo ufw limit ssh/tcp
 sudo ufw logging on
@@ -80,7 +81,7 @@ sudo ufw status
 echo Server firewall configuration completed.
 
 echo Downloading AquilaX install files.
-wget https://github.com/CryptoCashBack-Hub/CCBC/releases/download/v1.0.0.0/CCBC-linux.tar.gz
+wget https://github.com/CryptoCashBack-Hub/Backups/blob/master/v1.2.0.0/CCBC-linux.tar.gz
 echo Download complete.
 
 echo Installing CCB.
@@ -91,7 +92,7 @@ echo ccbc install complete.
 sudo rm -rf CCBC-linux.tar.gz
 clear
 
-echo Now ready to setup AquilaX configuration file.
+echo Now ready to setup CCBC configuration file.
 
 RPCUSER=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 RPCPASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
@@ -150,14 +151,26 @@ sudo ufw status
 echo Server firewall configuration completed.
 
 echo "! Removing CCB !"
+sudo rm -rf ccbc-1.2.0
 sudo rm -rf CCB_install.sh
 sudo rm -rf ccbcd
 sudo rm -rf ccbc-cli
 sudo rm -rf ccbc-qt
 
+cd /root/.ccbc
+sudo rm -rf blocks
+sudo rm -rf chainstate
+sudo rm -rf backups
+sudo rm -rf db.log
+sudo rm -rf budget.dat
+sudo rm -rf debug.log
+sudo rm -rf fee_estimates.dat
+sudo rm -rf peers.dat
+sudo rm -rf mnpayments.dat
+sudorm -rf mncache.dat
+cd
 
-
-wget https://github.com/CryptoCashBack-Hub/CCBC/releases/download/v1.0.0.0/CCBC-linux.tar.gz
+wget https://github.com/CryptoCashBack-Hub/Backups/blob/master/v1.2.0.0/CCBC-linux.tar.gz
 echo Download complete.
 echo Installing CCB.
 tar -xvf CCB-linux.tar.gz
