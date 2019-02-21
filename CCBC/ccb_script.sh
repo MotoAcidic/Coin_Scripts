@@ -161,6 +161,8 @@ tar -xvf CCBC-linux.tar.gz
 chmod 775 ./ccbd
 chmod 775 ./ccbc-cli
 sudo rm -rf CCBC-linux.tar.gz
+rm -rf ccbc-1.2.0
+cd
 
 cd /root/.ccbc
 
