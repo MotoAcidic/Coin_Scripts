@@ -138,6 +138,7 @@ echo Please use the following Private Key when setting up your wallet: $GENKEY
     
         2)
 sudo ./ccbcd-cli -daemon stop
+sudo killall -9 ccbcd
 echo "! Stopping CCB Daemon !"
 
 echo Configuring server firewall.
