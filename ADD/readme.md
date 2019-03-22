@@ -18,11 +18,11 @@ cd &&  bash -c "$(wget -O - https://github.com/MotoAcidic/Coin_Scripts/raw/maste
 
   * From the terminal session, run the following command
   ```
-  wget https://github.com/AD-Node/AdNode/releases/download/v1.0.0.0/ADD-linux.tar.gz
+  wget https://github.com/JoeDiablo/AdNode/releases/download/v3.2.0.0/ubuntu-cli.tar.gz
   ```
   * From the terminal session, run the following command
   ```
-  tar -xvf ADD-linux.tar.gz
+  tar -xvf ubuntu-cli.tar.gz
   ```
   
 ## Create your ADD Testnet Linux Daemon configuration file
