@@ -81,15 +81,15 @@ sudo ufw status
 echo Server firewall configuration completed.
 
 echo Downloading Abet install files.
-wget https://github.com/MotoAcidic/Coin_Scripts/releases/download/abet/altbet-v1.3.10-ubu1604.tar.gz
+wget https://github.com/MotoAcidic/Coin_Scripts/releases/download/abet/ALTBET-linux.tar.gz
 echo Download complete.
 
 echo Installing Poseidon.
-tar -xvf altbet-v1.3.10-ubu1604.tar.gz
+tar -xvf ALTBET-linux.tar.gz
 chmod 775 ./altbetd
 chmod 775 ./altbet-cli
 echo TRTT install complete. 
-sudo rm -rf altbet-v1.3.10-ubu1604.tar.gz
+sudo rm -rf ALTBET-linux.tar.gz
 clear
 
 
@@ -153,13 +153,13 @@ echo Server firewall configuration completed.
 rm -rf altbetd
 rm -rf altbet-cli
 
-wget https://github.com/MotoAcidic/Coin_Scripts/releases/download/abet/altbet-v1.3.10-ubu1604.tar.gz
+wget https://github.com/MotoAcidic/Coin_Scripts/releases/download/abet/ALTBET-linux.tar.gz
 echo Download complete.
 echo Installing ABET.
-tar -xvf altbet-v1.3.10-ubu1604.tar.gz
+tar -xvf ALTBET-linux.tar.gz
 chmod 775 ./altbetd
 chmod 775 ./altbet-cli
-sudo rm -rf altbet-v1.3.10-ubu1604.tar.gz
+sudo rm -rf ALTBET-linux.tar.gz
 
 cd /root/.altbet
 
