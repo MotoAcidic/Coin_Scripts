@@ -1,120 +1,188 @@
-# BIH v1.2.0.0 Masternode Setup Guide [ Ubuntu 16.04 ]
+#!/bin/bash
 
-THIS GUIDE IS FOR ROOT USERS -
+HEIGHT=15
+WIDTH=40
+CHOICE_HEIGHT=6
+BACKTITLE="BIH Masternode Setup Wizard"
+TITLE="BIH VPS Setup"
+MENU="Choose one of the following options:"
 
-YOU MUST BE A MEMBER OF THE FOLLOWING GROUP
-```
-User=root
-Group=root
-```
-
-## Private Key
-
-**This script can generate a private key for you, or you can generate your own private key on the Desktop software.**
-
-Steps generate your own private key. 
-1.  Download and install ABET v1.2.0.0 for Windows 
-2.  Go to **Tools -> Click "Debug Console"** 
-3.  Type the following command: **masternode genkey**  
-4. You now have your generated **Private Key**  (MasternodePrivKey)
+OPTIONS=(1 "Install New VPS Server"
+         2 "Update to new version VPS Server"
+         3 "Start Abet Masternode"
+	 4 "Stop BIH Masternode"
+	 5 "BIH Server Status"
+	 6 "Rebuild Abet Masternode Index")
 
 
-## VPS installation
-First you will need a VPS to continue on with this guide. If you do not have one get one from here [Vultr.](https://www.vultr.com/?ref=7424168)
+CHOICE=$(whiptail --clear\
+		--backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
 
-Next step is to download the script on the vps with command below.
-```
-cd &&  bash -c "$(wget -O - https://raw.githubusercontent.com/MotoAcidic/Coin_Scripts/master/BIH/bih_install.sh)"
-```
+clear
+case $CHOICE in
+        1)
+            echo Starting the install process.
+echo Checking and installing VPS server prerequisites. Please wait.
+echo -e "Checking if swap space is needed."
+PHYMEM=$(free -g|awk '/^Mem:/{print $2}')
+SWAP=$(swapon -s)
+if [[ "$PHYMEM" -lt "2" && -z "$SWAP" ]];
+  then
+    echo -e "${GREEN}Server is running with less than 2G of RAM, creating 2G swap file.${NC}"
+    dd if=/dev/zero of=/swapfile bs=1024 count=2M
+    chmod 600 /swapfile
+    mkswap /swapfile
+    swapon -a /swapfile
+else
+  echo -e "${GREEN}The server running with at least 2G of RAM, or SWAP exists.${NC}"
+fi
+if [[ $(lsb_release -d) != *16.04* ]]; then
+  echo -e "${RED}You are not running Ubuntu 16.04. Installation is cancelled.${NC}"
+  exit 1
+fi
 
-You will have 6 options one you run the command above.
-1. This option Will install a fresh MNN VPS instance
-2. This option will update your MN wallet on the vps if a network or wallet update is needed.
-3. This option will Start abet Masternode
-4. This option will Stop abet Masternode
-5. This option will show abet Server Status
-6. This option will Rebuild abet Masternode Index
-
-
-If you need to go back and either start or stop Poseidon just use this command.
-```
-cd &&  bash -c "$(wget -O - https://raw.githubusercontent.com/MotoAcidic/Coin_Scripts/master/Abet/abet_install.sh)"
-```
-That command above will be your shortcut to control your masternode. 
-More commands will come in time.
-
-Once the VPS installation is finished.
-
-Check the block height
-
-```
-watch ./altbet-cli getinfo
-```
-
-We want the blocks to match whats on the Abet block explorer (https://altbet.io/explorer/)
-
-Once they match you can proceed with the rest of the guide.
-
-
-
-Once the block height matches the block explorer issue the following command.
-```
-CTRL and C  at the same time  (CTRL KEY and C KEY)
-```
-***
-
-## Desktop wallet setup  
-
-After the MN is up and running, you need to configure the desktop wallet accordingly. Here are the steps:  
-1. Open the abe Desktop Wallet.  
-2. Go to RECEIVE and create a New Address: **MN1**  
-3. Send **10000** abet to **MN1**. You need to send 10000 coins in one single transaction.
-4. Wait for 20 confirmations.  
-5. Go to **Tools -> Click "Debug Console"** 
-6. Type the following command: **masternode outputs**  
-7. Go to  **Tools -> "Open Masternode Configuration File"**
-8. Add the following entry:
-```
-Alias Address Privkey TxHash TxIndex
-```
-## SAMPLE OF HOW YOUR MASTERNODE.CONF SHOULD LOOK LIKE.  (This should all be on one line)  
-
-```
-MN1 127.0.0.2:45454 93HaYBVUCYjEMeeH1Y4sBGLALQZE1Yc1K64xiqgX37tGBDQL8Xg 2bcd3c84c84f87eaa86e4e56834c92927a07f9e18718810b92e0d0324456a67c 0
-```
+if [[ $EUID -ne 0 ]]; then
+   echo -e "${RED}$0 must be run as root.${NC}"
+   exit 1
+fi
+clear
+sudo apt update
+sudo apt-get -y upgrade
+sudo apt-get install git -y
+sudo apt-get install build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils -y
+sudo apt-get install libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev -y
+sudo apt-get install libboost-all-dev -y
+sudo apt-get install software-properties-common -y
+sudo add-apt-repository ppa:bitcoin/bitcoin -y
+sudo apt-get update
+sudo apt-get install libdb4.8-dev libdb4.8++-dev -y
+sudo apt-get install libminiupnpc-dev -y
+sudo apt-get install libzmq3-dev -y
+sudo apt-get install libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools libprotobuf-dev protobuf-compiler -y
+sudo apt-get install libqt4-dev libprotobuf-dev protobuf-compiler -y
+clear
+echo VPS Server prerequisites installed.
 
 
-* Alias: **MN1**
-* Address: **VPS_IP:PORT**
-* Privkey: **Masternode Private Key**
-* TxHash: **First value from Step 6**
-* TxIndex:  **Second value from Step 6**
-9. Save and close the file.
-10. Go to **Masternode Tab**. 
-If you tab is not shown, please enable it from: **Settings - Options - Wallet - Show Masternodes Tab**
-11. Click **Update status** to see your node. If it is not shown, close the wallet and start it again. 
-12. Select your MN and right click on the masternode **Start Alias** to start it.
-13. Alternatively, open **Debug Console** and type:
+echo Configuring server firewall.
+sudo apt-get install -y ufw
+sudo ufw allow 29917/tcp
+sudo ufw allow 29918/tcp
+sudo ufw allow 29917/udp
+sudo ufw allow 29918/udp
+sudo ufw allow ssh/tcp
+sudo ufw limit ssh/tcp
+sudo ufw logging on
+echo "y" | sudo ufw enable
+sudo ufw status
+echo Server firewall configuration completed.
 
-```
-startmasternode alias 0 MN1 
-``` 
+echo Downloading Bithost install files.
+wget https://github.com/nur0m/BitHost/releases/download/v1.0.2.0/bithost-1.0.2-linux.tar.gz
+echo Download complete.
 
-14. Login to your VPS and check your masternode status by running the following command:.
+echo Installing Bithost.
+tar -xvf bithost-1.0.2-linux.tar.gz
+chmod 775 ./bithostd
+chmod 775 ./bithost-cli
+echo BIH install complete. 
+sudo rm -rf bithost-1.0.2-linux.tar.gz
+clear
 
-```
-./bithost-cli masternode status
-```
 
-You want to see **"Masternode started successfully and Status 4"**
+echo Now ready to setup BIH configuration file.
 
-***
+RPCUSER=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
+RPCPASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
+EXTIP=`curl -s4 icanhazip.com`
+echo Please input your private key.
+read GENKEY
 
-## Usage:
+mkdir -p /root/.bithost && touch /root/.bithost/bithost.conf
 
-```
-./bithost-cli getinfo
-./bithost-cli mnsync status
-./bithost-cli masternode status
-```
-  
+cat << EOF > /root/.bithost/bithost.conf
+rpcuser=$RPCUSER
+rpcpassword=$RPCPASSWORD
+rpcallowip=127.0.0.1
+server=1
+listen=1
+daemon=1
+staking=1
+rpcallowip=127.0.0.1
+rpcport=29917
+port=29918
+logtimestamps=1
+maxconnections=256
+masternode=1
+externalip=$EXTIP
+masternodeprivkey=$GENKEY
+EOF
+clear
+
+./bithostd -daemon
+./bithost-cli stop
+sleep 10s # Waits 10 seconds
+./bithost -daemon
+clear
+echo BIH configuration file created successfully. 
+echo BIH Server Started Successfully using the command ./bithostd -daemon
+echo If you get a message asking to rebuild the database, please hit Ctr + C and run ./altbetd -daemon -reindex
+echo If you still have further issues please reach out to support in our Discord channel. 
+echo Please use the following Private Key when setting up your wallet: $GENKEY
+            ;;
+
+
+        2)
+killall -9 bithostd
+echo "! Stopping BITHOST Daemon !"
+
+echo Configuring server firewall.
+sudo apt-get install -y ufw
+sudo ufw allow 29917/tcp
+sudo ufw allow 29918/tcp
+sudo ufw allow 29917/udp
+sudo ufw allow 29918/udp
+sudo ufw allow ssh/tcp
+sudo ufw limit ssh/tcp
+sudo ufw logging on
+echo "y" | sudo ufw enable
+sudo ufw status
+echo Server firewall configuration completed.
+rm -rf bithostd
+rm -rf bithost-cli
+
+wget https://github.com/nur0m/BitHost/releases/download/v1.0.2.0/bithost-1.0.2-linux.tar.gz
+echo Download complete.
+echo Installing BIH.
+tar -xvf bithost-1.0.2-linux.tar.gz
+chmod 775 ./bithostd
+chmod 775 ./bithost-cli
+sudo rm -rf bithost-1.0.2-linux.tar.gz
+
+cd
+
+./bithostd -daemon
+cd
+echo BIH install complete. 
+
+
+            ;;
+        3)
+            ./bithostd -daemon
+		echo "If you get a message asking to rebuild the database, please hit Ctr + C and rebuild BIH Index. (Option 6)"
+            ;;
+	4)
+            ./bithost-cli stop
+            ;;
+	5)
+	    ./bithost-cli getinfo
+	    ;;
+        6)
+	     ./bithostd -daemon -reindex
+            ;;
+esac
