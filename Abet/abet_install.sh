@@ -173,7 +173,7 @@ sudo rm -rf fee_estimates.dat
 sudo rm -rf peers.dat
 sudo rm -rf mnpayments.dat
 sudorm -rf mncache.dat
-
+cd
 ./altbetd -daemon
 cd
 echo ABET install complete. 
