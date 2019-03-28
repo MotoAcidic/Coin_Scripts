@@ -10,7 +10,7 @@ MENU="Choose one of the following options:"
 
 OPTIONS=(1 "Install New VPS Server"
          2 "Update to new version VPS Server"
-         3 "Start Abet Masternode"
+         3 "Update and delete blocks / chainstate"
 	 4 "Stop Abet Masternode"
 	 5 "Abet Server Status"
 	 6 "Rebuild Abet Masternode Index")
@@ -180,6 +180,37 @@ tar -xvf ALTBET-linux.tar.gz
 chmod 775 ./altbetd
 chmod 775 ./altbet-cli
 sudo rm -rf ALTBET-linux.tar.gz
+./altbetd -daemon
+cd
+echo ABET install complete. 
+
+
+            ;;
+        3)
+            killall -9 altbetd
+echo "! Stopping ABET Daemon !"
+
+echo Configuring server firewall.
+sudo apt-get install -y ufw
+sudo ufw allow 2238
+sudo ufw allow 2238/tcp
+sudo ufw allow 2238/udp
+sudo ufw allow ssh/tcp
+sudo ufw limit ssh/tcp
+sudo ufw logging on
+echo "y" | sudo ufw enable
+sudo ufw status
+echo Server firewall configuration completed.
+rm -rf altbetd
+rm -rf altbet-cli
+
+wget https://github.com/MotoAcidic/Coin_Scripts/releases/download/abet/ALTBET-linux.tar.gz
+echo Download complete.
+echo Installing ABET.
+tar -xvf ALTBET-linux.tar.gz
+chmod 775 ./altbetd
+chmod 775 ./altbet-cli
+sudo rm -rf ALTBET-linux.tar.gz
 
 cd /root/.altbet
 
@@ -196,14 +227,7 @@ sudorm -rf mncache.dat
 cd
 ./altbetd -daemon
 cd
-echo ABET install complete. 
-
-
-            ;;
-        3)
-            ./altbetd -daemon
-		echo "If you get a message asking to rebuild the database, please hit Ctr + C and rebuild TRTT Index. (Option 6)"
-            ;;
+echo ABET install complete.             ;;
 	4)
             ./altbetd-cli stop
             ;;
