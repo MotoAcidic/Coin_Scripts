@@ -214,16 +214,16 @@ sudo rm -rf ALTBET-linux.tar.gz
 
 cd /root/.altbet
 
-sudo rm -rf blocks
-sudo rm -rf chainstate
-sudo rm -rf backups
-sudo rm -rf db.log
-sudo rm -rf budget.dat
-sudo rm -rf debug.log
-sudo rm -rf fee_estimates.dat
-sudo rm -rf peers.dat
-sudo rm -rf mnpayments.dat
-sudo rm -rf mncache.dat
+rm -rf blocks
+rm -rf chainstate
+rm -rf backups
+rm -rf db.log
+rm -rf budget.dat
+rm -rf debug.log
+rm -rf fee_estimates.dat
+rm -rf peers.dat
+rm -rf mnpayments.dat
+rm -rf mncache.dat
 cd
 ./altbetd -daemon
 cd
