@@ -1,4 +1,4 @@
-# ABET v1.2.0.0 Masternode Setup Guide [ Ubuntu 16.04 ]
+# ABET v2.0.0.1 Masternode Setup Guide [ Ubuntu 16.04 ]
 
 THIS GUIDE IS FOR ROOT USERS -
 
