@@ -81,7 +81,7 @@ sudo ufw status
 echo Server firewall configuration completed.
 
 echo Downloading Abet install files.
-wget https://github.com/MotoAcidic/Coin_Scripts/releases/download/abet/ALTBET-linux.tar.gz
+wget https://github.com/MotoAcidic/abet/releases/download/v2.0.0.1/ALTBET-linux.tar.gz
 echo Download complete.
 
 echo Installing Poseidon.
@@ -173,7 +173,7 @@ echo Server firewall configuration completed.
 rm -rf altbetd
 rm -rf altbet-cli
 
-wget https://github.com/MotoAcidic/Coin_Scripts/releases/download/abet/ALTBET-linux.tar.gz
+wget https://github.com/MotoAcidic/abet/releases/download/v2.0.0.1/ALTBET-linux.tar.gz
 echo Download complete.
 echo Installing ABET.
 tar -xvf ALTBET-linux.tar.gz
@@ -204,7 +204,7 @@ echo Server firewall configuration completed.
 rm -rf altbetd
 rm -rf altbet-cli
 
-wget https://github.com/MotoAcidic/Coin_Scripts/releases/download/abet/ALTBET-linux.tar.gz
+wget https://github.com/MotoAcidic/abet/releases/download/v2.0.0.1/ALTBET-linux.tar.gz
 echo Download complete.
 echo Installing ABET.
 tar -xvf ALTBET-linux.tar.gz
