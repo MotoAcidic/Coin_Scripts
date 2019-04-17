@@ -81,15 +81,15 @@ sudo ufw status
 echo Server firewall configuration completed.
 
 echo Downloading Abet install files.
-wget https://github.com/MotoAcidic/abet/releases/download/v2.0.0.1/ALTBET-linux.tar.gz
+wget https://github.com/altbet/abet/releases/download/v.2.0.0.1/altbet-v2.0.0.1-ubu1604.tar.gz
 echo Download complete.
 
 echo Installing Poseidon.
-tar -xvf ALTBET-linux.tar.gz
+tar -xvf altbet-v2.0.0.1-ubu1604.tar.gz
 chmod 775 ./altbetd
 chmod 775 ./altbet-cli
 echo TRTT install complete. 
-sudo rm -rf ALTBET-linux.tar.gz
+sudo rm -rf altbet-v2.0.0.1-ubu1604.tar.gz
 clear
 
 
@@ -173,13 +173,13 @@ echo Server firewall configuration completed.
 rm -rf altbetd
 rm -rf altbet-cli
 
-wget https://github.com/MotoAcidic/abet/releases/download/v2.0.0.1/ALTBET-linux.tar.gz
+wget https://github.com/altbet/abet/releases/download/v.2.0.0.1/altbet-v2.0.0.1-ubu1604.tar.gz
 echo Download complete.
 echo Installing ABET.
-tar -xvf ALTBET-linux.tar.gz
+tar -xvf altbet-v2.0.0.1-ubu1604.tar.gz
 chmod 775 ./altbetd
 chmod 775 ./altbet-cli
-sudo rm -rf ALTBET-linux.tar.gz
+sudo rm -rf altbet-v2.0.0.1-ubu1604.tar.gz
 ./altbetd -daemon
 cd
 echo ABET install complete. 
@@ -204,13 +204,13 @@ echo Server firewall configuration completed.
 rm -rf altbetd
 rm -rf altbet-cli
 
-wget https://github.com/MotoAcidic/abet/releases/download/v2.0.0.1/ALTBET-linux.tar.gz
+wget https://github.com/altbet/abet/releases/download/v.2.0.0.1/altbet-v2.0.0.1-ubu1604.tar.gz
 echo Download complete.
 echo Installing ABET.
-tar -xvf ALTBET-linux.tar.gz
+tar -xvf altbet-v2.0.0.1-ubu1604.tar.gz
 chmod 775 ./altbetd
 chmod 775 ./altbet-cli
-sudo rm -rf ALTBET-linux.tar.gz
+sudo rm -rf altbet-v2.0.0.1-ubu1604.tar.gz
 
 cd /root/.altbet
 
