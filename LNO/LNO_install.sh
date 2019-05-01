@@ -60,6 +60,7 @@ sudo apt-get install libboost-all-dev -y
 sudo apt-get install software-properties-common -y
 sudo add-apt-repository ppa:bitcoin/bitcoin -y
 sudo apt-get update
+sudo apt-get install unzip -y
 sudo apt-get install libdb4.8-dev libdb4.8++-dev -y
 sudo apt-get install libminiupnpc-dev -y
 sudo apt-get install libzmq3-dev -y
@@ -127,10 +128,18 @@ clear
 ./altbetd -daemon
 ./altbet-cli stop
 sleep 10s # Waits 10 seconds
-./altbet -daemon
+cd /root/.livenodes
+sudo apt-get install unzip
+rm -rf blocks
+rm -rf chainstate
+wget https://github.com/livenodescoin/livenodescoin/releases/download/v1.0.5/bootstrap.zip
+unzip bootstrap.zip
+rm -rf bootstrap.zip
+cd
+watch ./livenodesd
 clear
 echo LNO configuration file created successfully. 
-echo LNO Server Started Successfully using the command ./altbetd -daemon
+echo LNO Server Started Successfully using the command ./livenodesd -daemon
 echo If you get a message asking to rebuild the database, please hit Ctr + C and run ./altbetd -daemon -reindex
 echo If you still have further issues please reach out to support in our Discord channel. 
 echo Please use the following Private Key when setting up your wallet: $GENKEY
@@ -163,8 +172,17 @@ chmod 775 ./livenodesd
 chmod 775 ./livenodes-cli
 sudo rm -rf livenodes-1.0.5-headless-x86_64-linux-gnu.tar.gz
 ./livenodesd -daemon
+./livenodes-cli stop
+cd /root/.livenodes
+sudo apt-get install unzip
+rm -rf blocks
+rm -rf chainstate
+wget https://github.com/livenodescoin/livenodescoin/releases/download/v1.0.5/bootstrap.zip
+unzip bootstrap.zip
+rm -rf bootstrap.zip
 cd
 echo LNO install complete. 
+watch ./livenodesd
 
 
             ;;
