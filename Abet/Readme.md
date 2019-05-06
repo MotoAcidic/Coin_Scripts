@@ -43,7 +43,7 @@ cd &&  bash -c "$(wget -O - https://raw.githubusercontent.com/MotoAcidic/Coin_Sc
 
 For Testnet use this scripts
 ```
-cd &&  bash -c "$(wget -O - https://raw.githubusercontent.com/MotoAcidic/Coin_Scripts/master/Abet/abet_install.sh)"
+cd &&  bash -c "$(wget -O - https://raw.githubusercontent.com/MotoAcidic/Coin_Scripts/master/Abet/testnet_install.sh)"
 ```
 That command above will be your shortcut to control your masternode. 
 More commands will come in time.
