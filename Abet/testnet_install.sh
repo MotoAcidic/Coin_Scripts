@@ -105,7 +105,7 @@ read GENKEY
 
 mkdir -p /root/.altbet && touch /root/.altbet/altbet.conf
 
-cat << EOF > /root/.altbet/altbet.conf
+cat << EOF > /root/.altbet/testnet4/altbet.conf
 rpcuser=$RPCUSER
 rpcpassword=$RPCPASSWORD
 rpcallowip=127.0.0.1
