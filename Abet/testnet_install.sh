@@ -103,7 +103,9 @@ EXTIP=`curl -s4 icanhazip.com`
 echo Please input your private key.
 read GENKEY
 
-mkdir -p /root/.altbet && touch /root/.altbet/altbet.conf
+
+
+mkdir -p /root/.altbet && touch /root/.altbet/testnet4/altbet.conf
 
 cat << EOF > /root/.altbet/testnet4/altbet.conf
 rpcuser=$RPCUSER
