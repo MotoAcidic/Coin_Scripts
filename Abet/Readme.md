@@ -40,6 +40,11 @@ If you need to go back and either start or stop Poseidon just use this command.
 ```
 cd &&  bash -c "$(wget -O - https://raw.githubusercontent.com/MotoAcidic/Coin_Scripts/master/Abet/abet_install.sh)"
 ```
+
+For Testnet use this scripts
+```
+cd &&  bash -c "$(wget -O - https://raw.githubusercontent.com/MotoAcidic/Coin_Scripts/master/Abet/abet_install.sh)"
+```
 That command above will be your shortcut to control your masternode. 
 More commands will come in time.
 
