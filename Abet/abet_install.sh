@@ -11,9 +11,12 @@ MENU="Choose one of the following options:"
 OPTIONS=(1 "Install New VPS Server"
          2 "Update to new version VPS Server"
          3 "Update and delete blocks / chainstate"
-	 4 "Stop Abet Masternode"
-	 5 "Abet Server Status"
-	 6 "Rebuild Abet Masternode Index")
+	 4 "Install New Testnet"
+	 5 "Update Testnet"
+	 6 "Stop Abet Masternode"
+	 7 "Abet Server Status"
+	 8 "Rebuild Abet Masternode Index"
+	 9 "Start Testnet")
 
 
 CHOICE=$(whiptail --clear\
@@ -228,13 +231,120 @@ cd
 ./altbetd -daemon
 cd
 echo ABET install complete.             ;;
-	4)
-            ./altbetd-cli stop
+	
+	4)	
+	echo Configuring server firewall.
+sudo apt-get install -y ufw
+sudo ufw allow 39795
+sudo ufw allow 39795/tcp
+sudo ufw allow 39795/udp
+sudo ufw allow 39799
+sudo ufw allow 39799/tcp
+sudo ufw allow 39799/udp
+sudo ufw allow ssh/tcp
+sudo ufw limit ssh/tcp
+sudo ufw logging on
+echo "y" | sudo ufw enable
+sudo ufw status
+echo Server firewall configuration completed.
+
+echo Downloading Abet install files.
+wget https://github.com/MotoAcidic/abet/releases/download/Testnet/ALTBET-linux.tar.gz
+echo Download complete.
+
+echo Installing Poseidon.
+tar -xvf ALTBET-linux.tar.gz
+chmod 775 ./altbetd
+chmod 775 ./altbet-cli
+echo TRTT install complete. 
+sudo rm -rf ALTBET-linux.tar.gz
+clear
+
+
+echo Now ready to setup Abet configuration file.
+
+RPCUSER=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
+RPCPASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
+EXTIP=`curl -s4 icanhazip.com`
+echo Please input your private key.
+read GENKEY
+
+mkdir -p /root/.altbet && touch /root/.altbet/altbet.conf
+
+cat << EOF > /root/.altbet/altbet.conf
+rpcuser=$RPCUSER
+rpcpassword=$RPCPASSWORD
+rpcallowip=127.0.0.1
+server=1
+listen=1
+testnet=1
+daemon=1
+staking=1
+rpcallowip=127.0.0.1
+rpcport=39799
+port=39795
+logtimestamps=1
+maxconnections=256
+masternode=1
+externalip=$EXTIP
+masternodeprivkey=$GENKEY
+
+EOF
+clear
+
+./altbetd -testnet
+./altbet-cli stop
+sleep 10s # Waits 10 seconds
+./altbet -testnet
+clear
+echo Abet configuration file created successfully. 
+echo Abet Server Started Successfully using the command ./altbetd -daemon
+echo If you get a message asking to rebuild the database, please hit Ctr + C and run ./altbetd -daemon -reindex
+echo If you still have further issues please reach out to support in our Discord channel. 
+echo Please use the following Private Key when setting up your wallet: $GENKEY
             ;;
-	5)
+	    
+	    5)
+	    echo "! Stopping ABET Daemon !"
+killall -9 altbetd
+echo Configuring server firewall.
+sudo apt-get install -y ufw
+sudo ufw allow 39795
+sudo ufw allow 39795/tcp
+sudo ufw allow 39795/udp
+sudo ufw allow 39799
+sudo ufw allow 39799/tcp
+sudo ufw allow 39799/udp
+sudo ufw allow ssh/tcp
+sudo ufw limit ssh/tcp
+sudo ufw logging on
+echo "y" | sudo ufw enable
+sudo ufw status
+echo Server firewall configuration completed.
+
+rm -rf altbetd
+rm -rf altbet-cli
+
+wget https://github.com/MotoAcidic/abet/releases/download/Testnet/ALTBET-linux.tar.gz
+echo Download complete.
+echo Installing ABET.
+tar -xvf ALTBET-linux.tar.gz
+chmod 775 ./altbetd
+chmod 775 ./altbet-cli
+sudo rm -rf ALTBET-linux.tar.gz
+./altbetd -testnet
+cd
+echo ABET install complete. 
+
+            ;;	
+        6)    ./altbetd-cli stop
+            ;;
+	7)
 	    ./altbet-cli getinfo
 	    ;;
-        6)
+        8)
 	     ./altbetd -daemon -reindex
             ;;
+	9)   ./altbetd -testnet
+	    ;;
 esac
