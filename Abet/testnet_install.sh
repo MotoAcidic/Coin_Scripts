@@ -63,6 +63,7 @@ sudo apt-get install libminiupnpc-dev -y
 sudo apt-get install libzmq3-dev -y
 sudo apt-get install libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools libprotobuf-dev protobuf-compiler -y
 sudo apt-get install libqt4-dev libprotobuf-dev protobuf-compiler -y
+sudo apt install unzip -y
 clear
 echo VPS Server prerequisites installed.
 
@@ -83,15 +84,15 @@ sudo ufw status
 echo Server firewall configuration completed.
 
 echo Downloading Abet install files.
-wget https://github.com/MotoAcidic/abet/releases/download/Testnet/ALTBET-linux.tar.gz
+wget https://github.com/SloRunner/abet/releases/download/test-1/linux-daemon.zip
 echo Download complete.
 
-echo Installing Poseidon.
-tar -xvf ALTBET-linux.tar.gz
+echo Installing Abet.
+unzip linux-daemon.zip
 chmod 775 ./altbetd
 chmod 775 ./altbet-cli
 echo Abet install complete. 
-sudo rm -rf ALTBET-linux.tar.gz
+sudo rm -rf linux-daemon.zip
 clear
 
 
@@ -121,6 +122,9 @@ rpcport=39799
 port=39795
 logtimestamps=1
 maxconnections=256
+addnode=45.76.36.57
+addnode=185.92.221.120
+addnode=144.202.104.105
 masternode=1
 externalip=$EXTIP
 masternodeprivkey=$GENKEY
