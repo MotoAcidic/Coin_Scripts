@@ -117,6 +117,7 @@ listen=1
 testnet=1
 daemon=1
 staking=1
+addnode=45.76.36.57
 rpcallowip=127.0.0.1
 rpcport=39799
 port=39795
