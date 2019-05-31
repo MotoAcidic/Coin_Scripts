@@ -84,7 +84,7 @@ sudo ufw status
 echo Server firewall configuration completed.
 
 echo Downloading Abet install files.
-wget https://github.com/SloRunner/abet/releases/download/testnet-r1/linux-daemon.zip
+wget https://github.com/SloRunner/abet/releases/download/testnet-r2/linux-daemon.zip
 echo Download complete.
 
 echo Installing Abet.
@@ -163,13 +163,13 @@ echo Server firewall configuration completed.
 rm -rf altbetd
 rm -rf altbet-cli
 
-wget https://github.com/SloRunner/abet/releases/download/testnet-r1/linux-daemon.zip
+wget https://github.com/SloRunner/abet/releases/download/testnet-r2/linux-daemon.zip
 echo Download complete.
 echo Installing ABET.
-tar -xvf ALTBET-linux.tar.gz
+tar -xvf linux-daemon.zip
 chmod 775 ./altbetd
 chmod 775 ./altbet-cli
-sudo rm -rf ALTBET-linux.tar.gz
+sudo rm -rf linux-daemon.zip
 ./altbetd -testnet
 cd
 echo ABET install complete. 
