@@ -166,7 +166,7 @@ rm -rf altbet-cli
 wget https://github.com/SloRunner/abet/releases/download/testnet-r2/linux-daemon.zip
 echo Download complete.
 echo Installing ABET.
-tar -xvf linux-daemon.zip
+unzip linux-daemon.zip
 chmod 775 ./altbetd
 chmod 775 ./altbet-cli
 sudo rm -rf linux-daemon.zip
