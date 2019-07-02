@@ -100,8 +100,8 @@ echo Now ready to setup Abet configuration file.
 RPCUSER=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 RPCPASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 EXTIP=`curl -s4 icanhazip.com`
-echo Please input your private key.
-read GENKEY
+#echo Please input your private key.
+#read GENKEY
 
 mkdir -p /root/.altbet && touch /root/.altbet/altbet.conf
 
@@ -112,18 +112,18 @@ rpcallowip=127.0.0.1
 server=1
 listen=1
 daemon=1
-staking=1
+#staking=1
 rpcallowip=127.0.0.1
-rpcport=2239
-port=2238
+rpcport=9322
+port=8322
 logtimestamps=1
 maxconnections=256
-masternode=1
+#masternode=1
 externalip=$EXTIP
-masternodeprivkey=$GENKEY
+#masternodeprivkey=$GENKEY
 addnode=185.206.146.209:2238
 addnode=185.206.147.210:2238
-addnode=185.206.144.217:2238
+addnode=140.82.1.78
 
 EOF
 clear
