@@ -83,15 +83,15 @@ sudo ufw status
 echo Server firewall configuration completed.
 
 echo Downloading Abet install files.
-wget https://github.com/MotoAcidic/Coin_Scripts/releases/download/Abet/altbet-v1.0.0.1-ubu1604.tar.gz
+wget https://github.com/MotoAcidic/Coin_Scripts/releases/download/Abet/altbet-v1.0.0.0-ubu1604.tar.gz
 echo Download complete.
 
 echo Installing altbet.
-tar -xvf altbet-v1.0.0.1-ubu1604.tar.gz
+tar -xvf altbet-v1.0.0.0-ubu1604.tar.gz
 chmod 775 ./altbetd
 chmod 775 ./altbet-cli
 echo TRTT install complete. 
-sudo rm -rf altbet-v1.0.0.1-ubu1604.tar.gz
+sudo rm -rf altbet-v1.0.0.0-ubu1604.tar.gz
 clear
 
 
