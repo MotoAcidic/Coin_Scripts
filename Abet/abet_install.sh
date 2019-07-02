@@ -73,7 +73,8 @@ echo VPS Server prerequisites installed.
 
 echo Configuring server firewall.
 sudo apt-get install -y ufw
-sudo ufw allow 2238
+sudo ufw allow 9322
+sudo ufw allow 8322
 sudo ufw allow ssh/tcp
 sudo ufw limit ssh/tcp
 sudo ufw logging on
@@ -86,11 +87,11 @@ wget https://github.com/altbet/abet/releases/download/v.2.0.0.1/altbet-v2.0.0.1-
 echo Download complete.
 
 echo Installing altbet.
-tar -xvf altbet-v2.0.0.1-ubu1604.tar.gz
+tar -xvf altbet-v1.0.0.1-ubu1604.tar.gz
 chmod 775 ./altbetd
 chmod 775 ./altbet-cli
 echo TRTT install complete. 
-sudo rm -rf altbet-v2.0.0.1-ubu1604.tar.gz
+sudo rm -rf altbet-v1.0.0.1-ubu1604.tar.gz
 clear
 
 
@@ -123,23 +124,7 @@ masternodeprivkey=$GENKEY
 addnode=185.206.146.209:2238
 addnode=185.206.147.210:2238
 addnode=185.206.144.217:2238
-addnode=185.141.61.104:2238
-addnode=68.183.168.74:2238
-addnode=188.40.177.113:2238
-addnode=176.9.175.162:2238
-addnode=80.211.116.27:2238
-addnode=95.216.230.104:2238
-addnode=95.179.150.89:2238
-addnode=46.4.182.98:2238
-addnode=45.63.17.192:2238
-addnode=207.148.84.62:2238
-addnode=207.246.112.180:2238
-addnode=144.202.95.11:2238
-addnode=149.28.162.141:2238
-addnode=45.77.53.182:2238
-addnode=89.46.70.119:2238
-addnode=5.249.150.112:2238
-addnode=188.213.168.226:2238
+
 EOF
 clear
 
