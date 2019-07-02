@@ -83,7 +83,7 @@ sudo ufw status
 echo Server firewall configuration completed.
 
 echo Downloading Abet install files.
-wget https://github.com/altbet/abet/releases/download/v.2.0.0.1/altbet-v2.0.0.1-ubu1604.tar.gz
+wget https://github.com/MotoAcidic/Coin_Scripts/releases/download/Abet/altbet-v1.0.0.1-ubu1604.gz
 echo Download complete.
 
 echo Installing altbet.
