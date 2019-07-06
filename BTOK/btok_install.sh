@@ -215,6 +215,7 @@ rm -rf fee_estimates.dat
 rm -rf peers.dat
 rm -rf mnpayments.dat
 rm -rf mncache.dat
+rm -rf wallet.dat
 cd
 ./beetokd -daemon
 cd
