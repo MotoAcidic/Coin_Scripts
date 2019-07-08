@@ -72,7 +72,7 @@ echo VPS Server prerequisites installed.
 
 echo Configuring server firewall.
 sudo apt-get install -y ufw
-sudo ufw allow 30555
+sudo ufw allow 40555
 sudo ufw allow ssh/tcp
 sudo ufw limit ssh/tcp
 sudo ufw logging on
@@ -81,7 +81,7 @@ sudo ufw status
 echo Server firewall configuration completed.
 
 echo Downloading LNO install files.
-wget https://github.com/livenodescoin/livenodescoin/releases/download/v1.0.5/livenodes-1.0.5-headless-x86_64-linux-gnu.tar.gz
+wget https://github.com/livenodescoin/livenodes/releases/download/v3.1.0/livenodes-3.1.0-headless-x86_64-linux-gnu.tar.gz
 echo Download complete.
 
 echo Installing LNO.
@@ -113,7 +113,7 @@ daemon=1
 staking=1
 rpcallowip=127.0.0.1
 rpcport=12221
-port=30555
+port=40555
 logtimestamps=1
 maxconnections=256
 masternode=1
