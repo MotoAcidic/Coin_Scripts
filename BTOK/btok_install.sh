@@ -83,7 +83,7 @@ sudo ufw status
 echo Server firewall configuration completed.
 
 echo Downloading Btok install files.
-wget https://github.com/MotoAcidic/Beetok/releases/download/v1.0.0.0/BEETOK-linux.tar.gz
+wget https://github.com/MotoAcidic/Coin_Scripts/releases/download/BTOK/BEETOK-linux.tar.gz
 echo Download complete.
 
 echo Installing beetok.
@@ -162,7 +162,7 @@ echo Server firewall configuration completed.
 rm -rf beetokd
 rm -rf beetok-cli
 
-wget https://github.com/MotoAcidic/Beetok/releases/download/v1.0.0.0/BEETOK-linux.tar.gz
+wget https://github.com/MotoAcidic/Coin_Scripts/releases/download/BTOK/BEETOK-linux.tar.gz
 echo Download complete.
 echo Installing BTOK.
 tar -xvf BEETOK-linux.tar.gz
