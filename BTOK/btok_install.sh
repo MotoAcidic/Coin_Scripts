@@ -151,6 +151,7 @@ rm -rf /usr/local/bin/beetok-cli
 rm -rf /root/.beetok/blocks
 rm -rf /root/.beetok/chainstate
 rm -rf /root/.beetok/database
+rm -rf mn
 
 echo "! Stopping BTOK Daemon !"
 
