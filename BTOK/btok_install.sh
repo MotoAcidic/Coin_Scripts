@@ -148,6 +148,9 @@ killall -9 beetokd
 systemctl stop Beetok
 rm -rf /usr/local/bin/beetokd
 rm -rf /usr/local/bin/beetok-cli
+rm -rf /root/.beetok/blocks
+rm -rf /root/.beetok/chainstate
+rm -rf /root/.beetok/database
 
 echo "! Stopping BTOK Daemon !"
 
