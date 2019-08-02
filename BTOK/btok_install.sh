@@ -145,6 +145,10 @@ echo Please use the following Private Key when setting up your wallet: $GENKEY
     
         2)
 killall -9 beetokd
+systemctl stop Beetok
+rm -rf /usr/local/bin/beetokd
+rm -rf /usr/local/bin/beetok-cli
+
 echo "! Stopping BTOK Daemon !"
 
 echo Configuring server firewall.
