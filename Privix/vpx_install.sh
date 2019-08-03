@@ -82,15 +82,15 @@ sudo ufw status
 echo Server firewall configuration completed.
 
 echo Downloading Vpx install files.
-wget https://github.com/privix/vpx/releases/download/v.2.0.0.1/privix-v2.0.0.1-ubu1604.tar.gz
+wget https://github.com/MotoAcidic/privix-core/releases/download/2.0.0.0/PRIVIX-linux.tar.gz
 echo Download complete.
 
 echo Installing Privix.
-tar -xvf privix-v2.0.0.1-ubu1604.tar.gz
+tar -xvf PRIVIX-linux.tar.gz
 chmod 775 ./privixd
 chmod 775 ./privix-cli
 echo TRTT install complete. 
-sudo rm -rf privix-v2.0.0.1-ubu1604.tar.gz
+sudo rm -rf PRIVIX-linux.tar.gz
 clear
 
 
@@ -157,7 +157,7 @@ echo Server firewall configuration completed.
 rm -rf privixd
 rm -rf privix-cli
 
-wget https://github.com/MotoAcidic/Coin_Scripts/releases/download/VPX/PRIVIX-linux.tar.gz
+wget https://github.com/MotoAcidic/privix-core/releases/download/2.0.0.0/PRIVIX-linux.tar.gz
 echo Download complete.
 echo Installing VPX.
 tar -xvf PRIVIX-linux.tar.gz
