@@ -87,7 +87,7 @@ wget https://github.com/CoinStaging/abet/releases/download/v.2.0.0.0/ABET-linux.
 echo Download complete.
 
 echo Installing altbet.
-tar -xvf ALTBET-linux.tar.gz
+tar -xvf ABET-linux.tar.gz
 chmod 775 ./abet
 chmod 775 ./abet-cli
 echo TRTT install complete. 
@@ -163,7 +163,7 @@ rm -rf altbet-cli
 wget https://github.com/MotoAcidic/Coin_Scripts/releases/download/Abet/ALTBET-linux.tar.gz
 echo Download complete.
 echo Installing ABET.
-tar -xvf ALTBET-linux.tar.gz
+tar -xvf ABET-linux.tar.gz
 chmod 775 ./altbetd
 chmod 775 ./altbet-cli
 sudo rm -rf ALTBET-linux.tar.gz
