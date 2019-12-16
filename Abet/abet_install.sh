@@ -91,7 +91,7 @@ tar -xvf ALTBET-linux.tar.gz
 chmod 775 ./abet
 chmod 775 ./abet-cli
 echo TRTT install complete. 
-sudo rm -rf ALTBET-linux.tar.gz
+sudo rm -rf ABET-linux.tar.gz
 clear
 
 
@@ -197,7 +197,7 @@ echo Installing ABET.
 tar -xvf ALTBET-linux.tar.gz
 chmod 775 ./abetd
 chmod 775 ./abet-cli
-sudo rm -rf ALTBET-linux.tar.gz
+sudo rm -rf ABET-linux.tar.gz
 
 cd /root/.abet
 
