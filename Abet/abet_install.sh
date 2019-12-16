@@ -83,13 +83,13 @@ sudo ufw status
 echo Server firewall configuration completed.
 
 echo Downloading Abet install files.
-wget https://github.com/MotoAcidic/Coin_Scripts/releases/download/Abet/ALTBET-linux.tar.gz
+wget https://github.com/CoinStaging/abet/releases/download/v.2.0.0.0/ABET-linux.tar.gz
 echo Download complete.
 
 echo Installing altbet.
 tar -xvf ALTBET-linux.tar.gz
-chmod 775 ./altbetd
-chmod 775 ./altbet-cli
+chmod 775 ./abet
+chmod 775 ./abet-cli
 echo TRTT install complete. 
 sudo rm -rf ALTBET-linux.tar.gz
 clear
@@ -103,9 +103,9 @@ EXTIP=`curl -s4 icanhazip.com`
 echo Please input your private key.
 read GENKEY
 
-mkdir -p /root/.altbet && touch /root/.altbet/altbet.conf
+mkdir -p /root/.abet && touch /root/.abet/abet.conf
 
-cat << EOF > /root/.altbet/altbet.conf
+cat << EOF > /root/.abet/abet.conf
 rpcuser=$RPCUSER
 rpcpassword=$RPCPASSWORD
 rpcallowip=127.0.0.1
@@ -121,20 +121,21 @@ maxconnections=256
 masternode=1
 externalip=$EXTIP
 masternodeprivkey=$GENKEY
-addnode=140.82.1.78
-addnode= 8.9.36.49
-addnode=140.82.48.162
+addnode=63.209.32.202
+addnode=173.199.118.20
+addnode=108.224.49.202
+addnode=144.202.2.218
 
 EOF
 clear
 
-./altbetd -daemon
-./altbet-cli stop
+./abetd -daemon
+./abet-cli stop
 sleep 10s # Waits 10 seconds
-./altbet -daemon
+./abet -daemon
 clear
 echo Abet configuration file created successfully. 
-echo Abet Server Started Successfully using the command ./altbetd -daemon
+echo Abet Server Started Successfully using the command ./abetd -daemon
 echo If you get a message asking to rebuild the database, please hit Ctr + C and run ./altbetd -daemon -reindex
 echo If you still have further issues please reach out to support in our Discord channel. 
 echo Please use the following Private Key when setting up your wallet: $GENKEY
@@ -142,7 +143,7 @@ echo Please use the following Private Key when setting up your wallet: $GENKEY
 	    
     
         2)
-killall -9 altbetd
+killall -9 abetd
 echo "! Stopping ABET Daemon !"
 
 echo Configuring server firewall.
@@ -190,15 +191,15 @@ echo Server firewall configuration completed.
 rm -rf altbetd
 rm -rf altbet-cli
 
-wget https://github.com/altbet/abet/releases/download/v.2.0.0.1/altbet-v2.0.0.1-ubu1604.tar.gz
+wget https://github.com/MotoAcidic/Coin_Scripts/releases/download/Abet/ALTBET-linux.tar.gz
 echo Download complete.
 echo Installing ABET.
-tar -xvf altbet-v2.0.0.1-ubu1604.tar.gz
-chmod 775 ./altbetd
-chmod 775 ./altbet-cli
-sudo rm -rf altbet-v2.0.0.1-ubu1604.tar.gz
+tar -xvf ALTBET-linux.tar.gz
+chmod 775 ./abetd
+chmod 775 ./abet-cli
+sudo rm -rf ALTBET-linux.tar.gz
 
-cd /root/.altbet
+cd /root/.abet
 
 rm -rf blocks
 rm -rf chainstate
@@ -211,18 +212,18 @@ rm -rf peers.dat
 rm -rf mnpayments.dat
 rm -rf mncache.dat
 cd
-./altbetd -daemon
+./abetd -daemon
 cd
 echo ABET install complete.             ;;
 	
 	
-        4)    ./altbetd-cli stop
+        4)    ./abet-cli stop
             ;;
 		5)
-	    ./altbet-cli getinfo
+	    ./abet-cli getinfo
 	    ;;
         6)
-	     ./altbetd -daemon -reindex
+	     ./abetd -daemon -reindex
             ;;
 
 esac
