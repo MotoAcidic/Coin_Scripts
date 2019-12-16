@@ -90,8 +90,7 @@ echo Installing altbet.
 tar -xvf ABET-linux.tar.gz
 chmod 775 ./abet
 chmod 775 ./abet-cli
-echo TRTT install complete. 
-sudo rm -rf ABET-linux.tar.gz
+echo TRTT install complete.
 clear
 
 
@@ -166,7 +165,6 @@ echo Installing ABET.
 tar -xvf ABET-linux.tar.gz
 chmod 775 ./altbetd
 chmod 775 ./altbet-cli
-sudo rm -rf ALTBET-linux.tar.gz
 ./altbetd -daemon
 cd
 echo ABET install complete. 
