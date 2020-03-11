@@ -88,13 +88,13 @@ echo Download complete.
 
 echo Installing altbet.
 tar -xvf CATS-linux.tar.gz
-chmod 775 ./abet
-chmod 775 ./abet-cli
-echo TRTT install complete.
+chmod 775 ./catsd
+chmod 775 ./cats-cli
+echo Cats install complete.
 clear
 
 
-echo Now ready to setup Abet configuration file.
+echo Now ready to setup catTHIS configuration file.
 
 RPCUSER=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 RPCPASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
@@ -102,9 +102,9 @@ EXTIP=`curl -s4 icanhazip.com`
 echo Please input your private key.
 read GENKEY
 
-mkdir -p /root/.abet && touch /root/.abet/abet.conf
+mkdir -p /root/.cats && touch /root/.cats/cats.conf
 
-cat << EOF > /root/.abet/abet.conf
+cat << EOF > /root/.cats/cats.conf
 rpcuser=$RPCUSER
 rpcpassword=$RPCPASSWORD
 rpcallowip=127.0.0.1
@@ -113,8 +113,8 @@ listen=1
 daemon=1
 #staking=1
 rpcallowip=127.0.0.1
-rpcport=9322
-port=8322
+rpcport=2238
+port=22711
 logtimestamps=1
 maxconnections=256
 masternode=1
@@ -124,31 +124,33 @@ addnode=104.207.140.233
 addnode=155.138.202.38
 addnode=108.224.49.202
 addnode=144.202.2.218
+addnode=8.9.8.6
+addnode=45.77.149.76
+addnode=140.82.8.2
 EOF
 clear
 
-./abetd -daemon
-./abet-cli stop
+./catsd -daemon
+./cats-cli stop
 sleep 10s # Waits 10 seconds
-./abet -daemon
+./cats -daemon
 clear
 echo Abet configuration file created successfully. 
-echo Abet Server Started Successfully using the command ./abetd -daemon
-echo If you get a message asking to rebuild the database, please hit Ctr + C and run ./altbetd -daemon -reindex
+echo Abet Server Started Successfully using the command ./catsd -daemon
+echo If you get a message asking to rebuild the database, please hit Ctr + C and run ./catsd -daemon -reindex
 echo If you still have further issues please reach out to support in our Discord channel. 
 echo Please use the following Private Key when setting up your wallet: $GENKEY
             ;;
 	    
     
         2)
-killall -9 abetd
-echo "! Stopping ABET Daemon !"
+killall -9 catsd
+echo "! Stopping catTHIS Daemon !"
 
 echo Configuring server firewall.
 sudo apt-get install -y ufw
 sudo ufw allow 2238
-sudo ufw allow 2238/tcp
-sudo ufw allow 2238/udp
+sudo ufw allow 22711
 sudo ufw allow ssh/tcp
 sudo ufw limit ssh/tcp
 sudo ufw logging on
@@ -158,45 +160,44 @@ echo Server firewall configuration completed.
 rm -rf altbetd
 rm -rf altbet-cli
 
-wget https://github.com/MotoAcidic/Coin_Scripts/releases/download/Abet/ALTBET-linux.tar.gz
+wget https://github.com/MotoAcidic/Coin_Scripts/releases/download/cat/CATS-linux.tar.gz
 echo Download complete.
-echo Installing ABET.
-tar -xvf ABET-linux.tar.gz
-chmod 775 ./altbetd
-chmod 775 ./altbet-cli
-./altbetd -daemon
+echo Installing catTHIS.
+tar -xvf CATS-linux.tar.gz
+chmod 775 ./catsd
+chmod 775 ./cats-cli
+./catsd -daemon
 cd
-echo ABET install complete. 
+echo catTHIS install complete. 
 
 
             ;;
         3)
-            killall -9 altbetd
-echo "! Stopping ABET Daemon !"
+            killall -9 catsd
+echo "! Stopping catTHIS Daemon !"
 
 echo Configuring server firewall.
 sudo apt-get install -y ufw
 sudo ufw allow 2238
-sudo ufw allow 2238/tcp
-sudo ufw allow 2238/udp
+sudo ufw allow 22711
 sudo ufw allow ssh/tcp
 sudo ufw limit ssh/tcp
 sudo ufw logging on
 echo "y" | sudo ufw enable
 sudo ufw status
 echo Server firewall configuration completed.
-rm -rf altbetd
-rm -rf altbet-cli
+rm -rf catsd
+rm -rf cats-cli
 
-wget https://github.com/MotoAcidic/Coin_Scripts/releases/download/Abet/ALTBET-linux.tar.gz
+wget https://github.com/MotoAcidic/Coin_Scripts/releases/download/cat/CATS-linux.tar.gz
 echo Download complete.
-echo Installing ABET.
-tar -xvf ALTBET-linux.tar.gz
-chmod 775 ./abetd
-chmod 775 ./abet-cli
-sudo rm -rf ABET-linux.tar.gz
+echo Installing catTHIS.
+tar -xvf CATS-linux.tar.gz
+chmod 775 ./catsd
+chmod 775 ./cats-cli
+sudo rm -rf CATS-linux.tar.gz
 
-cd /root/.abet
+cd /root/.cats
 
 rm -rf blocks
 rm -rf chainstate
@@ -209,18 +210,18 @@ rm -rf peers.dat
 rm -rf mnpayments.dat
 rm -rf mncache.dat
 cd
-./abetd -daemon
+./catsd -daemon
 cd
-echo ABET install complete.             ;;
+echo catTHIS install complete.             ;;
 	
 	
-        4)    ./abet-cli stop
+        4)    ./cats-cli stop
             ;;
 		5)
-	    ./abet-cli getinfo
+	    ./cats-cli getinfo
 	    ;;
         6)
-	     ./abetd -daemon -reindex
+	     ./catsd -daemon -reindex
             ;;
 
 esac
