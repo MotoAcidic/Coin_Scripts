@@ -40,8 +40,9 @@ then
   tar -xvf CATS-linux.tar.gz
   chmod +x catsd
   chmod +x cats-cli
-  sudo mv  catsd /usr/local/bin
-  sudo mv  cats-cli /usr/local/bin
+  sudo mv  catsd /usr/local/bin/linux
+  sudo mv  cats-cli /usr/local/bin/linux
+  sudo mv  cats-tx /usr/local/bin/linux
   rm -rf CATS-linux.tar.gz
 
   sudo apt-get install -y ufw
@@ -86,37 +87,37 @@ for i in `seq 1 1 $MNCOUNT`; do
   read RPCPORT
 
   ALIAS=${ALIAS}
-  CONF_DIR=~/.catsthis_$ALIAS
+  CONF_DIR=~/.cats_$ALIAS
 
   # Create scripts
-  echo '#!/bin/bash' > ~/bin/catsthisd_$ALIAS.sh
-  echo "catthisd -daemon -conf=$CONF_DIR/catsthis.conf -datadir=$CONF_DIR "'$*' >> ~/bin/catsthisd_$ALIAS.sh
-  echo '#!/bin/bash' > ~/bin/catsthis-cli_$ALIAS.sh
-  echo "catthis-cli -conf=$CONF_DIR/catsthis.conf -datadir=$CONF_DIR "'$*' >> ~/bin/catsthis-cli_$ALIAS.sh
-  echo '#!/bin/bash' > ~/bin/catsthis-tx_$ALIAS.sh
-  echo "catthis-tx -conf=$CONF_DIR/catsthis.conf -datadir=$CONF_DIR "'$*' >> ~/bin/catsthis-tx_$ALIAS.sh 
-  chmod 755 ~/bin/catsthis*.sh
+  echo '#!/bin/bash' > ~/bin/catsd_$ALIAS.sh
+  echo "catsd -daemon -conf=$CONF_DIR/cats.conf -datadir=$CONF_DIR "'$*' >> ~/bin/catsd_$ALIAS.sh
+  echo '#!/bin/bash' > ~/bin/cats-cli_$ALIAS.sh
+  echo "cats-cli -conf=$CONF_DIR/cats.conf -datadir=$CONF_DIR "'$*' >> ~/bin/cats-cli_$ALIAS.sh
+  echo '#!/bin/bash' > ~/bin/cats-tx_$ALIAS.sh
+  echo "cats-tx -conf=$CONF_DIR/cats.conf -datadir=$CONF_DIR "'$*' >> ~/bin/cats-tx_$ALIAS.sh 
+  chmod 755 ~/bin/cats*.sh
 
   mkdir -p $CONF_DIR
-  echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> catsthis.conf_TEMP
-  echo "rpcpassword=pass"`shuf -i 100000-10000000 -n 1` >> catsthis.conf_TEMP
-  echo "rpcallowip=127.0.0.1" >> catsthis.conf_TEMP
-  echo "rpcport=$RPCPORT" >> catsthis.conf_TEMP
-  echo "listen=1" >> catsthis.conf_TEMP
-  echo "server=1" >> catsthis.conf_TEMP
-  echo "daemon=1" >> catsthis.conf_TEMP
-  echo "logtimestamps=1" >> catsthis.conf_TEMP
-  echo "maxconnections=256" >> catsthis.conf_TEMP
-  echo "masternode=1" >> catsthis.conf_TEMP
-  echo "" >> catsthis.conf_TEMP
+  echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> cats.conf_TEMP
+  echo "rpcpassword=pass"`shuf -i 100000-10000000 -n 1` >> cats.conf_TEMP
+  echo "rpcallowip=127.0.0.1" >> cats.conf_TEMP
+  echo "rpcport=$RPCPORT" >> cats.conf_TEMP
+  echo "listen=1" >> cats.conf_TEMP
+  echo "server=1" >> cats.conf_TEMP
+  echo "daemon=1" >> cats.conf_TEMP
+  echo "logtimestamps=1" >> cats.conf_TEMP
+  echo "maxconnections=256" >> cats.conf_TEMP
+  echo "masternode=1" >> cats.conf_TEMP
+  echo "" >> cats.conf_TEMP
 
-  echo "" >> catsthis.conf_TEMP
-  echo "port=$PORT" >> catsthis.conf_TEMP
-  echo "masternodeaddr=$IP:$PORT" >> catsthis.conf_TEMP
-  echo "masternodeprivkey=$PRIVKEY" >> catsthis.conf_TEMP
+  echo "" >> cats.conf_TEMP
+  echo "port=$PORT" >> cats.conf_TEMP
+  echo "masternodeaddr=$IP:$PORT" >> cats.conf_TEMP
+  echo "masternodeprivkey=$PRIVKEY" >> cats.conf_TEMP
   sudo ufw allow $PORT/tcp
 
-  mv catsthis.conf_TEMP $CONF_DIR/catsthis.conf
+  mv catsthis.conf_TEMP $CONF_DIR/cats.conf
   
-  sh ~/bin/catsthisd_$ALIAS.sh
+  sh ~/bin/catsd_$ALIAS.sh
 done
