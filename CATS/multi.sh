@@ -40,9 +40,9 @@ then
   tar -xvf CATS-linux.tar.gz
   chmod +x catsd
   chmod +x cats-cli
-  sudo mv  catsd /usr/local/bin/linux
-  sudo mv  cats-cli /usr/local/bin/linux
-  sudo mv  cats-tx /usr/local/bin/linux
+  sudo mv  catsd /usr/local/bin/
+  sudo mv  cats-cli /usr/local/bin/
+  sudo mv  cats-tx /usr/local/bin/
   rm -rf CATS-linux.tar.gz
 
   sudo apt-get install -y ufw
