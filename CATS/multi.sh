@@ -35,7 +35,7 @@ then
   sudo echo "/var/swap.img none swap sw 0 0" >> /etc/fstab
   cd
 
-  catthis-cli stop
+  cats-cli stop
   wget https://github.com/MotoAcidic/Coin_Scripts/releases/download/cat/CATS-linux.tar.gz
   tar -xvf CATS-linux.tar.gz
   chmod +x catsd
@@ -117,7 +117,7 @@ for i in `seq 1 1 $MNCOUNT`; do
   echo "masternodeprivkey=$PRIVKEY" >> cats.conf_TEMP
   sudo ufw allow $PORT/tcp
 
-  mv catsthis.conf_TEMP $CONF_DIR/cats.conf
+  mv cats.conf_TEMP $CONF_DIR/cats.conf
   
   sh ~/bin/catsd_$ALIAS.sh
 done
