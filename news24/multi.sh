@@ -109,22 +109,22 @@ for i in `seq 1 1 $MNCOUNT`; do
   chmod 755 ~/bin/News24*.sh
 
   mkdir -p $CONF_DIR
-  echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> cats.conf_TEMP
-  echo "rpcpassword=pass"`shuf -i 100000-10000000 -n 1` >> cats.conf_TEMP
-  echo "rpcallowip=127.0.0.1" >> cats.conf_TEMP
-  echo "rpcport=$RPCPORT" >> cats.conf_TEMP
-  echo "listen=1" >> cats.conf_TEMP
-  echo "server=1" >> cats.conf_TEMP
-  echo "daemon=1" >> cats.conf_TEMP
-  echo "logtimestamps=1" >> cats.conf_TEMP
-  echo "maxconnections=256" >> cats.conf_TEMP
-  echo "masternode=1" >> cats.conf_TEMP
-  echo "" >> cats.conf_TEMP
+  echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> News24.conf_TEMP
+  echo "rpcpassword=pass"`shuf -i 100000-10000000 -n 1` >> News24.conf_TEMP
+  echo "rpcallowip=127.0.0.1" >> News24.conf_TEMP
+  echo "rpcport=$RPCPORT" >> News24.conf_TEMP
+  echo "listen=1" >> News24.conf_TEMP
+  echo "server=1" >> News24.conf_TEMP
+  echo "daemon=1" >> News24.conf_TEMP
+  echo "logtimestamps=1" >> News24.conf_TEMP
+  echo "maxconnections=256" >> News24.conf_TEMP
+  echo "masternode=1" >> News24.conf_TEMP
+  echo "" >> News24.conf_TEMP
 
   echo "" >> cats.conf_TEMP
-  echo "port=$PORT" >> cats.conf_TEMP
-  echo "masternodeaddr=$IP:$PORT" >> cats.conf_TEMP
-  echo "masternodeprivkey=$PRIVKEY" >> cats.conf_TEMP
+  echo "port=$PORT" >> News24.conf_TEMP
+  echo "masternodeaddr=$IP:$PORT" >> News24.conf_TEMP
+  echo "masternodeprivkey=$PRIVKEY" >> News24.conf_TEMP
   sudo ufw allow $PORT/tcp
 
   mv News24.conf_TEMP $CONF_DIR/News24.conf
