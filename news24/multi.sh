@@ -4,7 +4,7 @@ cd ~
 echo "****************************************************************************"
 echo "* Ubuntu 16.04 is the recommended opearting system for this install.       *"
 echo "*                                                                          *"
-echo "* This script will install and configure your catsthis  masternodes.       *"
+echo "* This script will install and configure your News24  masternodes.       *"
 echo "****************************************************************************"
 echo && echo && echo
 echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
@@ -121,7 +121,7 @@ for i in `seq 1 1 $MNCOUNT`; do
   echo "masternode=1" >> News24.conf_TEMP
   echo "" >> News24.conf_TEMP
 
-  echo "" >> cats.conf_TEMP
+  echo "" >> News24.conf_TEMP
   echo "port=$PORT" >> News24.conf_TEMP
   echo "masternodeaddr=$IP:$PORT" >> News24.conf_TEMP
   echo "masternodeprivkey=$PRIVKEY" >> News24.conf_TEMP
